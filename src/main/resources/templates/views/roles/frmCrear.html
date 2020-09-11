@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="plantilla/template :: head">
+
+</head>
+<body>
+	<header th:replace="plantilla/template :: header" ></header>
+	
+	<div class="container"> 
+	
+	<div class="card bg-light">
+		<div class="card-header bg-dark text-white" th:text="${titulo}"></div>
+		<div class="card-body">
+		
+			<form th:action="@{/rol/save}" th:object="${rol}" method ="post">
+			<div class="form-group row">
+			
+				<input type="hidden" th:field="*{id_rol}">
+				<label class="col-md-2" for="nombre_rol">Role:</label> 
+				<input type="text" th:field="*{nombre_rol}" class="form-control form-control-sm col-md-3"  id="nombre_rol"
+				placeholder="Role Types">
+				<small></small>	
+			</div>
+			<div class="card-footer bg-dark">
+				<input type="submit" class="btn btn-primary btn-sm" value="Save"/>
+			</div>
+			
+		</form>
+		</div>
+	</div>
+	</div>
+	<footer th:replace="plantilla/template :: footer"></footer>
+</body>
+</html>

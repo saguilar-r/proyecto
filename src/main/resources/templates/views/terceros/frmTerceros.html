@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="plantilla/template :: head">
+
+</head>
+<body>
+	<header th:replace="plantilla/template :: header" ></header>
+	
+	<div class="container"> 
+	
+		<div class="card bg-light">
+		<div class="card-header bg-dark text-white" th:text="${titulo}"></div>
+		<div class="card-body">
+		
+			<form th:action="@{/terceros/saveTercero}" th:object="${terceros}" method ="post">
+			<div class="form-group row">
+			
+				<input type="hidden" th:field="*{id_tercero}">
+				<label class="col-md-2" for="id_categoria_tercero">THIRD PARTIES CATEGORY:</label> 
+				<select th:field="*{categoria}" class="form-control form-control-sm col-md-6"  id="id_categoria_tercero">
+				<option th:each="ct:${cterceros}"
+				 th:value="${ct.id_categoria_tercero}"
+				 th:text="${ct.nombre}"
+				 />
+				</select>
+			</div>
+			
+			<div class="form-group row">
+				<label class="col-md-2" for="tipo_documento">DOCUMENT TYPE:</label> 
+				<input type="text" th:field="*{tipo_documento}" class="form-control form-control-sm col-md-6"  id="tipo_documento"
+				placeholder="document type">
+				<small></small>	
+			</div>
+			
+			<div class="form-group row">
+				<label class="col-md-2" for="num_documento">DOCUMENT NUMBER:</label> 
+				<input type="text" th:field="*{num_documento}" class="form-control form-control-sm col-md-6"  id="num_documento"
+				placeholder="document type">
+				<small></small>	
+			</div>
+			
+			<div class="form-group row">
+				<label class="col-md-2" for="razon_social">BUSSINESS NAME:</label> 
+				<input type="text" th:field="*{razon_social}" class="form-control form-control-sm col-md-6"  id="razon_social"
+				placeholder="bussiness name">
+				<small></small>	
+			</div>
+			
+			<div class="form-group row">
+				<label class="col-md-2" for="telefono">PHONE:</label> 
+				<input type="text" th:field="*{telefono}" class="form-control form-control-sm col-md-6"  id="telefono"
+				placeholder="Phone">
+				<small></small>	
+			</div>
+			
+			<div class="form-group row">
+				<label class="col-md-2" for="direccion">ADDRESS:</label> 
+				<input type="text" th:field="*{direccion}" class="form-control form-control-sm col-md-6"  id="direccion"
+				placeholder="address">
+				<small></small>	
+			</div>
+			
+			<div class="form-group row">
+				<label class="col-md-2" for="ciudad">CITY:</label> 
+				<input type="text" th:field="*{ciudad}" class="form-control form-control-sm col-md-6"  id="ciudad"
+				placeholder="City">
+				<small></small>	
+			</div>
+			
+			<div class="form-group row">
+				<label class="col-md-2" for="email">EMAIL:</label> 
+				<input type="text" th:field="*{email}" class="form-control form-control-sm col-md-6"  id="email"
+				placeholder="email">
+				<small></small>	
+			</div>
+			
+			<div class="form-group row">
+				<label class="col-md-2" for="persona_contacto">CONTACT PERSON:</label> 
+				<input type="text" th:field="*{persona_contacto}" class="form-control form-control-sm col-md-6"  id="persona_contacto"
+				placeholder="contact person">
+				<small></small>	
+			</div>
+
+			<div class="form-group row">
+				<label class="col-md-2" for="telefon_contacto">CONTACT PHONE:</label> 
+				<input type="text" th:field="*{telefon_contacto}" class="form-control form-control-sm col-md-6"  id="telefon_contacto" 
+				placeholder="Contact phone">
+				<small></small>	
+			</div>
+				
+			<div class="form-group row">
+				<label class="col-md-2" for="estado">Status:</label> 
+				<select th:field="*{estado}" class="form-control form-control-sm col-md-6"  id="estado">
+				<option th:text="'Activo'" th:value="true"/>
+				<option th:text="'inactivo'" th:value="false"/>
+				</select>
+				</div>
+			
+			<div class="card-footer bg-dark">
+				<input type="submit" class="btn btn-primary btn-sm" value="Save"/>
+			</div>
+			
+		</form>
+		</div>
+	</div>
+	</div>
+	
+	
+	<footer th:replace="plantilla/template :: footer"></footer>
+</body>
+</html>

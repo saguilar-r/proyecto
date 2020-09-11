@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="plantilla/template :: head">
+
+</head>
+<body>
+	<header th:replace="plantilla/template :: header" ></header>
+	
+	<div class="container"> 
+	
+		<div class="card bg-light">
+		<div class="card-header bg-dark text-white" th:text="${titulo}"></div>
+		<div class="card-body">
+		
+			<form th:action="@{/ventas/saveventa}" th:object="${rventas}" method ="post">
+			<div class="form-group row">
+			
+				<input type="hidden" th:field="*{id_registro_venta}">
+				<label class="col-md-2" for="id_tercero">THIRD PARTIES ID:</label> 
+				<select th:field="*{tercero}" class="form-control form-control-sm col-md-6"  id="id_tercero">
+				<option th:each="ct:${terceros}"
+				 th:value="${ct.id_tercero}"
+				 th:text="${ct.id_tercero}"
+				 />
+				</select>
+			</div>
+			
+			<div class="form-group row">
+				<label class="col-md-2" for="tipo_comprobante">SALES SLIP TYPE:</label> 
+				<input type="text" th:field="*{tipo_comprobante}" class="form-control form-control-sm col-md-6"  id="tipo_comprobante"
+				placeholder="type">
+				<small></small>	
+			</div>
+			
+			<div class="form-group row">
+				<label class="col-md-2" for="num_comprobante">SALES SLIP NUMBER:</label> 
+				<input type="text" th:field="*{num_comprobante}" class="form-control form-control-sm col-md-6"  id="num_comprobante"
+				placeholder="number">
+				<small></small>	
+			</div>
+			
+			<div class="form-group row">
+				<label class="col-md-2" for="fecha">DATE:</label> 
+				<input type="text" th:field="*{fecha}" class="form-control form-control-sm col-md-6"  id="fecha"
+				placeholder="date">
+				<small></small>	
+			</div>
+			
+			<div class="form-group row">
+				<label class="col-md-2" for="subtotal">TOTAL PARCIAL:</label> 
+				<input type="text" th:field="*{subtotal}" class="form-control form-control-sm col-md-6"  id="subtotal"
+				placeholder="total parcial">
+				<small></small>	
+			</div>
+			
+			<div class="form-group row">
+				<label class="col-md-2" for="impuesto">TAX:</label> 
+				<input type="text" th:field="*{impuesto}" class="form-control form-control-sm col-md-6"  id="impuesto"
+				placeholder="tax">
+				<small></small>	
+			</div>
+			
+			<div class="form-group row">
+				<label class="col-md-2" for="total">TOTAL:</label> 
+				<input type="text" th:field="*{total}" class="form-control form-control-sm col-md-6"  id="total"
+				placeholder="total">
+				<small></small>	
+			</div>
+			
+			<div class="card-footer bg-dark">
+				<input type="submit" class="btn btn-primary btn-sm" value="Save"/>
+			</div>
+			
+		</form>
+		</div>
+	</div>
+	</div>
+	
+	
+	<footer th:replace="plantilla/template :: footer"></footer>
+</body>
+</html>

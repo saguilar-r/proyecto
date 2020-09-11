@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="plantilla/template :: head">
+
+</head>
+<body>
+	<header th:replace="plantilla/template :: header" ></header>
+	
+	<div class="container"> 
+	
+		<div class="card bg-light">
+		<div class="card-header bg-dark text-white" th:text="${titulo}"></div>
+		<div class="card-body">
+		
+			<form th:action="@{/productos/saveProducto}" th:object="${producto}" method ="post">
+			<div class="form-group row">
+			
+				<input type="hidden" th:field="*{id_producto}">
+				<label class="col-md-2" for="id_categoria_producto">PRODUCT CATEGORY:</label> 
+				<select th:field="*{catproductos}" class="form-control form-control-sm col-md-6"  id="id_categoria_producto">
+				<option th:each="ct:${ctproductos}"
+				 th:value="${ct.id_categoria_producto}"
+				 th:text="${ct.nombre}"
+				 />
+				</select>
+			</div>
+			
+			<div class="form-group row">
+				<label class="col-md-2" for="codigo">PRODUCT CODE:</label> 
+				<input type="text" th:field="*{codigo}" class="form-control form-control-sm col-md-6"  id="codigo"
+				placeholder="code">
+				<small></small>	
+			</div>
+			
+			<div class="form-group row">
+				<label class="col-md-2" for="nombre_producto">PRODUCT NAME:</label> 
+				<input type="text" th:field="*{nombre_producto}" class="form-control form-control-sm col-md-6"  id="nombre_producto"
+				placeholder="Product Name">
+				<small></small>	
+			</div>
+			
+			<div class="form-group row">
+				<label class="col-md-2" for="descripcion">PRODUCT DESCRIPTION:</label> 
+				<input type="text" th:field="*{descripcion}" class="form-control form-control-sm col-md-6"  id="descripcion"
+				placeholder="Product Description">
+				<small></small>	
+			</div>
+			
+			<div class="form-group row">
+				<label class="col-md-2" for="stock">STOCK:</label> 
+				<input type="text" th:field="*{stock}" class="form-control form-control-sm col-md-6"  id="stock"
+				placeholder="Stock">
+				<small></small>	
+			</div>
+			
+			<div class="form-group row">
+				<label class="col-md-2" for="precio_compra">PURCHASE COST:</label> 
+				<input type="text" th:field="*{precio_compra}" class="form-control form-control-sm col-md-6"  id="precio_compra"
+				placeholder="Purchase Cost">
+				<small></small>	
+			</div>
+			
+			<div class="form-group row">
+				<label class="col-md-2" for="precio_venta">SALE COST:</label> 
+				<input type="text" th:field="*{precio_venta}" class="form-control form-control-sm col-md-6"  id="precio_venta"
+				placeholder="Sale Cost">
+				<small></small>	
+			</div>
+			
+			<div class="form-group row">
+				<label class="col-md-2" for="marca_producto">PRODUCT BRAND:</label> 
+				<input type="text" th:field="*{marca_producto}" class="form-control form-control-sm col-md-6"  id="marca_producto"
+				placeholder="Product Brand">
+				<small></small>	
+			</div>
+
+			<div class="form-group row">
+				<label class="col-md-2" for="marca_coche">CAR BRAND:</label> 
+				<input type="text" th:field="*{marca_coche}" class="form-control form-control-sm col-md-6"  id="marca_coche" 
+				placeholder="Car Brand">
+				<small></small>	
+			</div>
+				
+				<div class="form-group row">
+				<label class="col-md-2" for="referencia">REFERENCE:</label> 
+				<input type="text" th:field="*{referencia}" class="form-control form-control-sm col-md-6"  id="referencia" 
+				placeholder="referencia">
+				<small></small>	
+			</div>
+			
+				<div class="form-group row">
+				<label class="col-md-2" for="modelo">CAR MODEL: </label> 
+				<input type="text" th:field="*{modelo}" class="form-control form-control-sm col-md-6"  id="modelo" 
+				placeholder="Car model">
+				<small></small>	
+			</div>
+			
+			<div class="form-group row">
+				<label class="col-md-2" for="lado">SIDE: </label> 
+				<input type="text" th:field="*{lado}" class="form-control form-control-sm col-md-6"  id="lado" 
+				placeholder="Side">
+				<small></small>	
+			</div>
+			
+			<div class="form-group row">
+				<label class="col-md-2" for="ubicacion">LOCATION: </label> 
+				<input type="text" th:field="*{ubicacion}" class="form-control form-control-sm col-md-6"  id="ubicacion" 
+				placeholder="Location">
+				<small></small>	
+			</div>
+			
+			<div class="form-group row">
+				<label class="col-md-2" for="imagen">IMAGE: </label> 
+				<input type="text" th:field="*{imagen}" class="form-control form-control-sm col-md-6"  id="imagen" 
+				placeholder="image">
+				<small></small>	
+			</div>
+			
+			<div class="form-group row">
+				<label class="col-md-2" for="estado">Status:</label> 
+				<select th:field="*{estado}" class="form-control form-control-sm col-md-6"  id="estado">
+				<option th:text="'Activo'" th:value="true"/>
+				<option th:text="'inactivo'" th:value="false"/>
+				</select>
+				</div>
+			
+			<div class="card-footer bg-dark">
+				<input type="submit" class="btn btn-primary btn-sm" value="Save"/>
+			</div>
+			
+		</form>
+		</div>
+	</div>
+	</div>
+	
+	
+	<footer th:replace="plantilla/template :: footer"></footer>
+</body>
+</html>

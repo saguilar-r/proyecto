@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="plantilla/template :: head">
+</head>
+<body>
+	<header th:replace="plantilla/template :: header"></header>
+
+	<div class="container">	
+	
+	<div class="alert alert-success alert-dismissible fade show"
+			role="alert" th:if="${success}">
+			<strong th:text="${success}"></strong>
+			<button type="button" class="close" data-dismiss="alert"
+				aria-label="Close">
+				<span aria-hidden="true">&times;</span>
+			</button>
+		</div>
+		<div class="alert alert-warning alert-dismissible fade show"
+			role="alert" th:if="${warning}">
+			<strong th:text="${warning}"></strong>
+			<button type="button" class="close" data-dismiss="alert"
+				aria-label="Close">
+				<span aria-hidden="true">&times;</span>
+			</button>
+		</div>
+	    
+		<h1  class="display-3 text-center" th:text="${titulo}"></h1>	
+		
+	</div>
+	
+	<div class="container-fluid" id="background-head">
+	<div class="card bg-light">	
+		<div class="card-body">
+	
+		<a class="btn btn-primary btn-sm" th:href="@{/productos/createProducto}"
+		th:text="'New Product'" title="Create A New Record">
+		</a>
+		
+		
+		<table class="table">
+			<thead class="thead-dark">
+				<tr>
+					<th scope="col">PRODUCT ID</th>
+					<th scope="col">CODE</th>
+					<th scope="col">PRODUCT NAME</th>
+					<th scope="col">STOCK</th>
+					<th scope="col">PURCHASE COST</th>
+					<th scope="col">SALE COST</th>
+					<th scope="col">BRAND</th>
+					<th scope="col">CAR</th>
+					<th scope="col">REFERENCE CAR</th>
+					<th scope="col">STATUS</th>
+					<th scope="col">ACTIONS</th>
+					
+				</tr>
+			</thead>
+			<tbody>
+				<tr th:each="p:${productos}">
+					<th scope="row" th:text="${p.id_producto}"></th>
+					<td th:text="${p.codigo}"></td>
+					<td th:text="${p.nombre_producto}"></td>
+					<td th:text="${p.stock}"></td>
+					<td th:text="${p.precio_compra}"></td>
+					<td th:text="${p.precio_venta}"></td>
+					<td th:text="${p.marca_producto}"></td>
+					<td th:text="${p.marca_coche}"></td>
+					<td th:text="${p.referencia}"></td>
+					<td th:text="${p.estado}"></td>
+						
+					<td>
+					<a class="btn btn-warning btn-sm" th:href="@{/productos/edit/} + ${p.id_producto}" 
+					th:text="'Edit'" title="Record Edit"
+					onclick="return confirm('Do you want edit this field?');">>
+					</a>
+					<a class="btn btn-danger btn-sm" th:href="@{/productos/delete/} + ${p.id_producto}" 
+					th:text="'Delete'" title="Record Delete"
+					onclick="return confirm('Do you want delete this field?');">
+					</a>
+					</td>
+								
+				</tr>
+			</tbody>
+		</table>
+
+
+	</div>
+</div>
+</div>
+	<footer th:replace="plantilla/template :: footer"></footer>
+
+</body>
+</html>

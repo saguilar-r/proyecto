@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="plantilla/template :: head">
+</head>
+<body>
+	<header th:replace="plantilla/template :: header"></header>
+
+	<div class="container">	
+	
+	<div class="alert alert-success alert-dismissible fade show"
+			role="alert" th:if="${success}">
+			<strong th:text="${success}"></strong>
+			<button type="button" class="close" data-dismiss="alert"
+				aria-label="Close">
+				<span aria-hidden="true">&times;</span>
+			</button>
+		</div>
+		<div class="alert alert-warning alert-dismissible fade show"
+			role="alert" th:if="${warning}">
+			<strong th:text="${warning}"></strong>
+			<button type="button" class="close" data-dismiss="alert"
+				aria-label="Close">
+				<span aria-hidden="true">&times;</span>
+			</button>
+		</div>
+	    
+		<h1 th:text="${titulo}"></h1>	
+		
+	</div>
+	
+	<div class="card bg-light">	
+		<div class="card-body">
+	
+		<a class="btn btn-primary btn-sm" th:href="@{/empleados/createEmpl}"
+		th:text="'New Record'" title="Create A New Record">
+		</a>
+		
+		
+		<table class="table">
+			<thead class="thead-dark">
+				<tr>
+					<th scope="col">EMPLOYEE ID</th>
+					<th scope="col">USER ID</th>
+					<th scope="col">POSITION ID</th>
+					<th scope="col">IDENTIFICATION TYPE</th>
+					<th scope="col">IDENTIFICATION NUMBER</th>
+					<th scope="col">NAME 1</th>
+					<th scope="col">NAME 2</th>
+					<th scope="col">LAST NAME 1</th>
+					<th scope="col">LAST NAME 2</th>
+					<th scope="col">ADDRESS</th>
+					<th scope="col">PHONE</th>
+					<th scope="col">EMAIL</th>
+					<th scope="col">STATUS</th>
+					<th scope="col">ACTIONS</th>
+					
+				</tr>
+			</thead>
+			<tbody>
+				<tr th:each="e:${empleados}">
+					<th scope="row" th:text="${e.id_empleado}"></th>
+					<td th:text="${e.usuario.id_usuario}"></td>
+					<td th:text="${e.cargo.id_cargo}"></td>
+					<td th:text="${e.tipo_documento}"></td>
+					<td th:text="${e.num_documento}"></td>
+					<td th:text="${e.nombre_1}"></td>
+					<td th:text="${e.nombre_2}"></td>
+					<td th:text="${e.apellido_1}"></td>
+					<td th:text="${e.apellido_2}"></td>
+					<td th:text="${e.direccion}"></td>
+					<td th:text="${e.telefono}"></td>
+					<td th:text="${e.email}"></td>
+					<td th:text="${e.estado}"></td>
+						
+					<td>
+					<a class="btn btn-warning btn-sm" th:href="@{/empleados/edit/} + ${e.id_empleado}" 
+					th:text="'Edit'" title="Record Edit"
+					onclick="return confirm('Do you want edit this field?');">>
+					</a>
+					<a class="btn btn-danger btn-sm" th:href="@{/empleados/delete/} + ${e.id_empleado}" 
+					th:text="'Delete'" title="Record Delete"
+					onclick="return confirm('Esta seguro de eliminar el registro?');">
+					</a>
+					</td>
+								
+				</tr>
+			</tbody>
+		</table>
+
+
+	</div>
+</div>
+</div>
+	<footer th:replace="plantilla/template :: footer"></footer>
+
+</body>
+</html>

@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="plantilla/template :: head">
+</head>
+<body>
+	<header th:replace="plantilla/template :: header"></header>
+
+	<div class="container">
+
+		<div class="alert alert-success alert-dismissible fade show"
+			role="alert" th:if="${success}">
+			<strong th:text="${success}"></strong>
+			<button type="button" class="close" data-dismiss="alert"
+				aria-label="Close">
+				<span aria-hidden="true">&times;</span>
+			</button>
+		</div>
+		<div class="alert alert-warning alert-dismissible fade show"
+			role="alert" th:if="${warning}">
+			<strong th:text="${warning}"></strong>
+			<button type="button" class="close" data-dismiss="alert"
+				aria-label="Close">
+				<span aria-hidden="true">&times;</span>
+			</button>
+		</div>
+
+		<h1 class="display-3 text-center" th:text="${titulo}"></h1>
+
+	</div>
+
+	<div class="container">
+		<div class="card bg-light">
+			<div class="card-body">
+
+				<a class="btn btn-primary btn-sm" th:href="@{/usuarios/createUser}"
+					th:text="'New User'" title="Create A New Record"> </a>
+
+
+				<table class="table table-striped">
+					<thead class="thead-dark">
+						<tr>
+							<th scope="col">USER ID</th>
+							<th scope="col">USERNAME</th>
+							<th scope="col">KEY</th>
+							<th scope="col">STATUS</th>
+							<th scope="col">ROLE NAME</th>
+							<th scope="col">ACTIONS</th>
+
+						</tr>
+					</thead>
+					<tbody>
+						<tr th:each="cl:${usuarios}">
+							<th scope="row" th:text="${cl.id_usuario}"></th>
+							<td th:text="${cl.username}"></td>
+							<td th:text="${cl.clave}"></td>
+							<td th:text="${cl.estado}"></td>
+							<td th:text="${cl.rol.nombre_rol}"></td>
+							<td><a class="btn btn-warning btn-sm"
+								th:href="@{/usuarios/edit/} + ${cl.id_usuario}" th:text="'Edit'"
+								title="Record Edit"
+								onclick="return confirm('Do you want edit this field?');">>
+							</a> <a class="btn btn-danger btn-sm"
+								th:href="@{/usuarios/delete/} + ${cl.id_usuario}"
+								th:text="'Delete'" title="Record Delete"
+								onclick="return confirm('Do you want delete this record?');">
+							</a></td>
+
+						</tr>
+					</tbody>
+				</table>
+			</div>
+		</div>
+	</div>
+
+	<footer th:replace="plantilla/template :: footer"></footer>
+
+</body>
+</html>
+<!-- <!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="plantilla/template :: head">
+
+</head>
+<body>
+	<header th:replace="plantilla/template :: header" ></header>
+	
+	<div class="container"> 
+		<h1 th:text="${titulo}"></h1>
+		<p th:text="${usuarios}"></p>
+	</div>
+	<div class="container">
+
+
+		<a class="btn btn-primary btn-sm" th:href="@{/rol/create}"
+		th:text="'New User'" title="Create A New Record">
+		</a>
+		
+		<table class="table">
+			<thead class="thead-dark">
+				<tr>
+					<th scope="col">USER ID</th>
+					<th scope="col">ROLE ID</th>
+					<th scope="col">USERNAME</th>
+					<th scope="col">KEY</th>
+					<th scope="col">STATUS</th>
+					
+				</tr>
+			</thead>
+			<tbody>
+				<tr th:each="u:${usuario}">
+					<th scope="row" th:text="${u.id_usuario}"></th>
+					<td th:text="${r.id_rol}"></td>
+					<td th:text="${u.username}"></td>
+					<td th:text="${u.clave}"></td>
+					<td th:text="${u.estado}"></td>
+					<td th:text="${u.rol.id_rol}"></td>
+					
+					<a class="btn btn-success btn-sm" th:href="@{/rol/edit/} + ${r.id_rol}"
+					th:text="'Edit'" title="Record Edit"></a>
+					<a class="btn btn-danger btn-sm" th:href="@{/rol/delete/} + ${r.id_rol}"
+					th:text="'Delete'" title="Record Delete"></a>
+					</td>
+
+				</tr>
+			</tbody>
+		</table>
+	</div>
+	
+	<footer th:replace="plantilla/template :: footer"></footer>
+
+</body>
+</html> -->

@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="plantilla/template :: head">
+</head>
+<body>
+	<header th:replace="plantilla/template :: header"></header>
+
+	<div class="container">	
+	
+	<div class="alert alert-success alert-dismissible fade show"
+			role="alert" th:if="${success}">
+			<strong th:text="${success}"></strong>
+			<button type="button" class="close" data-dismiss="alert"
+				aria-label="Close">
+				<span aria-hidden="true">&times;</span>
+			</button>
+		</div>
+		<div class="alert alert-warning alert-dismissible fade show"
+			role="alert" th:if="${warning}">
+			<strong th:text="${warning}"></strong>
+			<button type="button" class="close" data-dismiss="alert"
+				aria-label="Close">
+				<span aria-hidden="true">&times;</span>
+			</button>
+		</div>
+	    
+		<h1  class="display-3 text-center" th:text="${titulo}"></h1>	
+		
+	</div>
+	
+	<div class="container-fluid" id="background-head">
+
+	
+		<a class="btn btn-primary btn-sm" th:href="@{/stock/createStock}"
+		th:text="'New Record'" title="Create A New Record">
+		</a>
+		
+		
+		<table class="table">
+			<thead class="thead-dark">
+				<tr>
+					<th scope="col">STOCK ID</th>
+					<th scope="col">THIRD PARTIES ID</th>
+					<th scope="col">SALES SLIP TYPE</th> <!-- TIPO DE COMPROBANTE -->
+					<th scope="col">SALES SLIP NUMBER</th> <!-- NUMERO DE COMPROBANTE -->
+					<th scope="col">DATE</th>
+					<th scope="col">TOTAL PARCIAL</th> <!-- SUBTOTAL -->
+					<th scope="col">TOTAL</th>
+					<th scope="col">ACTIONS</th>
+					
+				</tr>
+			</thead>
+			<tbody>
+				<tr th:each="i:${stock}">
+					<th scope="row" th:text="${i.id_registro_inventario}"></th>
+					<td th:text="${i.tercero.id_tercero}"></td>
+					<td th:text="${i.tipo_comprobante}"></td>
+					<td th:text="${i.num_comprobante}"></td>
+					<td th:text="${i.fecha}"></td>
+					<td th:text="${i.subtotal}"></td>
+					<td th:text="${i.total}"></td>
+		
+					<td>
+					<a class="btn btn-warning btn-sm" th:href="@{/stock/edit/} + ${i.id_registro_inventario}" 
+					th:text="'Edit'" title="Record Edit"
+					onclick="return confirm('Do you want edit this field?');">
+					</a>
+					<a class="btn btn-danger btn-sm" th:href="@{/stock/delete/} + ${i.id_registro_inventario}" 
+					th:text="'Delete'" title="Record Delete"
+					onclick="return confirm('Do you want delete this field??');">
+					</a>
+					</td>
+								
+				</tr>
+			</tbody>
+		</table>
+
+
+	</div>
+
+	<footer th:replace="plantilla/template :: footer"></footer>
+
+</body>
+</html>

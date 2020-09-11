@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="plantilla/template :: head">
+</head>
+<body>
+	<header th:replace="plantilla/template :: header"></header>
+
+	<div class="container">	
+	
+	<div class="alert alert-success alert-dismissible fade show"
+			role="alert" th:if="${success}">
+			<strong th:text="${success}"></strong>
+			<button type="button" class="close" data-dismiss="alert"
+				aria-label="Close">
+				<span aria-hidden="true">&times;</span>
+			</button>
+		</div>
+		<div class="alert alert-warning alert-dismissible fade show"
+			role="alert" th:if="${warning}">
+			<strong th:text="${warning}"></strong>
+			<button type="button" class="close" data-dismiss="alert"
+				aria-label="Close">
+				<span aria-hidden="true">&times;</span>
+			</button>
+		</div>
+	    
+		<h1 class="display-3 text-center" th:text="${titulo}"></h1>
+		<div class="shadow-lg p-3 mb-5 bg-grey rounded"></div>
+		
+	</div>
+	
+	<div class="card bg-light">	
+		<div class="card-body">
+	
+		<a class="btn btn-primary btn-sm" th:href="@{/dventas/createDetalleV}"
+		th:text="'New Record'" title="Create A New Record">
+		</a>
+		
+		
+		<table class="table">
+			<thead class="thead-dark">
+				<tr>
+					<th scope="col">SALE DETAILS ID</th>
+					<th scope="col">SALE ID</th>
+					<th scope="col">PRODUCT ID</th>
+					<th scope="col">QUANTITY</th>
+					<th scope="col">PRICE</th>
+					<th scope="col">DISCOUNT</th>
+					<th scope="col">ACTIONS</th>
+					
+				</tr>
+			</thead>
+			<tbody>
+				<tr th:each="e:${dventas}">
+					<th scope="row" th:text="${e.id_detalle_registro_ventas}"></th>
+					<td th:text="${e.ventas.id_registro_venta}"></td>
+					<td th:text="${e.producto.id_producto}"></td>
+					<td th:text="${e.cantidad}"></td>
+					<td th:text="${e.precio}"></td>
+					<td th:text="${e.descuento}"></td>
+
+						
+					<td>
+					<a class="btn btn-warning btn-sm" th:href="@{/dventas/edit/} + ${e.id_detalle_registro_ventas}" 
+					th:text="'Edit'" title="Record Edit"
+					onclick="return confirm('Do you want edit this field?');">>
+					</a>
+					<a class="btn btn-danger btn-sm" th:href="@{/dventas/delete/} + ${e.id_detalle_registro_ventas}" 
+					th:text="'Delete'" title="Record Delete"
+					onclick="return confirm('Esta seguro de eliminar el registro?');">
+					</a>
+					</td>
+								
+				</tr>
+			</tbody>
+		</table>
+
+
+	</div>
+</div>
+
+	<footer th:replace="plantilla/template :: footer"></footer>
+
+</body>
+</html>

@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="plantilla/template :: head">
+
+</head>
+<body>
+	<header th:replace="plantilla/template :: header" ></header>
+	
+	<div class="container"> 
+	
+		<div class="card bg-light">
+		<div class="card-header bg-dark text-white" th:text="${titulo}"></div>
+		<div class="card-body">
+		
+			<form th:action="@{/empleados/saveEmpl}" th:object="${empleado}" method ="post">
+			<div class="form-group row">
+			
+		
+				<input type="hidden" th:field="*{id_empleado}">
+				<label class="col-md-2" for="tipo_documento">IDENTIFICATION TYPE:</label> 
+				<input type="text" th:field="*{tipo_documento}" class="form-control form-control-sm col-md-6"  id="tipo_documento"
+				placeholder="Identification type (Two characters)">
+				<small></small>	
+			</div>
+			
+			<div class="form-group row">
+				<label class="col-md-2" for="num_documento">IDENTIFICATION NUMBER:</label> 
+				<input type="text" th:field="*{num_documento}" class="form-control form-control-sm col-md-6"  id="num_documento"
+				placeholder="Identification number">
+				<small></small>	
+			</div>
+			
+			<div class="form-group row">
+				<label class="col-md-2" for="nombre_1">FIRST NAME:</label> 
+				<input type="text" th:field="*{nombre_1}" class="form-control form-control-sm col-md-6"  id="nombre_1"
+				placeholder="Name">
+				<small></small>	
+			</div>
+			
+			<div class="form-group row">
+				<label class="col-md-2" for="nombre_2">SECOND NAME:</label> 
+				<input type="text" th:field="*{nombre_2}" class="form-control form-control-sm col-md-6"  id="nombre_2"
+				placeholder="Second Name">
+				<small></small>	
+			</div>
+			
+			<div class="form-group row">
+				<label class="col-md-2" for="apellido_1">FIRST LAST NAME:</label> 
+				<input type="text" th:field="*{apellido_1}" class="form-control form-control-sm col-md-6"  id="apellido_1"
+				placeholder="Last name">
+				<small></small>	
+			</div>
+			
+			<div class="form-group row">
+				<label class="col-md-2" for="apellido_2">SECOND LAST NAME:</label> 
+				<input type="text" th:field="*{apellido_2}" class="form-control form-control-sm col-md-6"  id="apellido_2"
+				placeholder="Last Name">
+				<small></small>	
+			</div>
+			
+			<div class="form-group row">
+				<label class="col-md-2" for="direccion">ADDRESS:</label> 
+				<input type="text" th:field="*{direccion}" class="form-control form-control-sm col-md-6"  id="direccion"
+				placeholder="Address">
+				<small></small>	
+			</div>
+			
+			<div class="form-group row">
+				<label class="col-md-2" for="telefono">PHONE</label> 
+				<input type="text" th:field="*{telefono}" class="form-control form-control-sm col-md-6"  id="telefono"
+				placeholder="Phone">
+				<small></small>	
+			</div>
+			
+			<div class="form-group row">
+				<label class="col-md-2" for="email">EMAIL:</label> 
+				<input type="text" th:field="*{email}" class="form-control form-control-sm col-md-6"  id="email"
+				placeholder="Email">
+				<small></small>	
+			</div>
+
+			<div class="form-group row">
+				<label class="col-md-2" for="estado">Status:</label> 
+				<select th:field="*{estado}" class="form-control form-control-sm col-md-6"  id="estado">
+				<option th:text="'Activo'" th:value="true"/>
+				<option th:text="'inactivo'" th:value="false"/>
+				</select>
+				</div>
+				
+				<div class="form-group row">
+				<label class="col-md-2" for="id_cargo">POSITION ID:</label> 
+				<select  th:field="*{cargo.id_cargo}" class="form-control form-control-sm col-md-6"  id="id_cargo">
+				<option th:each="c:${cargos}"
+				 th:value="${c.id_cargo}"
+				 th:text="${c.nombre_cargo}"
+				 />
+				</select>
+				</div>
+			
+				<div class="form-group row">
+				<label class="col-md-2" for="id_usuario">usuario:</label> 
+				<select th:field="*{usuario.id_usuario}" class="form-control form-control-sm col-md-6"  id="id_usuario">
+				<option th:each="u:${usuario}"
+				 th:value="${u.id_usuario}"
+				 th:text="${u.id_usuario}"
+				 />
+				</select>
+			</div>
+			
+			<div class="card-footer bg-dark">
+				<input type="submit" class="btn btn-primary btn-sm" value="Save"/>
+			</div>
+			
+		</form>
+		</div>
+	</div>
+	</div>
+	
+	
+	<footer th:replace="plantilla/template :: footer"></footer>
+</body>
+</html>

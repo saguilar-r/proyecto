@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="plantilla/template :: head">
+
+</head>
+<body>
+	<header th:replace="plantilla/template :: header" ></header>
+	
+	<div class="container"> 
+	
+		<div class="card bg-light">
+		<div class="card-header bg-dark text-white" th:text="${titulo}"></div>
+		<div class="card-body">
+		
+			<form th:action="@{/dcompras/saveDetalleC}" th:object="${dcompras}" method ="post">
+			<div class="form-group row">
+			
+		
+				<input type="hidden" th:field="*{id_detalle_registro_compra}">
+				<label class="col-md-2" for="id_registro_compra">PURCHASE ID:</label> 
+				<select  th:field="*{compra.id_registro_compra}" class="form-control form-control-sm col-md-6"  id="id_registro_compra">
+				<option th:each="c:${compras}"
+				 th:value="${c.id_registro_compra}"
+				 th:text="${c.id_registro_compra}"
+				 />
+				</select>
+				</div>
+			
+			<div class="form-group row">
+				<label class="col-md-2" for="id_producto">PRODUCT NAME:</label> 
+				<select  th:field="*{producto.id_producto}" class="form-control form-control-sm col-md-6"  id="id_producto">
+				<option th:each="p:${productos}"
+				 th:value="${p.id_producto}"
+				 th:text="${p.nombre_producto}"
+				 />
+				</select>
+				</div>
+			
+			<div class="form-group row">
+				<label class="col-md-2" for="cantidad">QUANTITY:</label> 
+				<input type="text" th:field="*{cantidad}" class="form-control form-control-sm col-md-6"  id="cantidad"
+				placeholder="Quantity">
+				<small></small>	
+			</div>
+			
+			<div class="form-group row">
+				<label class="col-md-2" for="precio">PRICE:</label> 
+				<input type="text" th:field="*{precio}" class="form-control form-control-sm col-md-6"  id="precio"
+				placeholder="Price">
+				<small></small>	
+			</div>
+			
+			<div class="form-group row">
+				<label class="col-md-2" for="descuento">DISCOUNT:</label> 
+				<input type="text" th:field="*{descuento}" class="form-control form-control-sm col-md-6"  id="descuento"
+				placeholder="Discount">
+				<small></small>	
+			</div>
+			
+			<div class="card-footer bg-dark">
+				<input type="submit" class="btn btn-primary btn-sm" value="Save"/>
+			</div>
+			
+		</form>
+		</div>
+	</div>
+	</div>
+
+	
+	<footer th:replace="plantilla/template :: footer"></footer>
+</body>
+</html>
