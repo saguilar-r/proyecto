@@ -25,12 +25,11 @@
 		</div>
 
 		<h1 class="display-3 text-center" th:text="${titulo}"></h1>
-
+		<div class="shadow-lg p-3 mb-5 bg-white rounded"></div>
 	</div>
 
 	<div class="container">
-		<div class="card bg-light">
-			<div class="card-body">
+	
 
 				<a class="btn btn-primary btn-sm" th:href="@{/usuarios/createUser}"
 					th:text="'New User'" title="Create A New Record"> </a>
@@ -69,8 +68,7 @@
 					</tbody>
 				</table>
 			</div>
-		</div>
-	</div>
+
 
 	<footer th:replace="plantilla/template :: footer"></footer>
 

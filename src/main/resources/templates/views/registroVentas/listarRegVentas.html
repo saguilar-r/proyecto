@@ -25,19 +25,18 @@
 		</div>
 	    
 		<h1  class="display-3 text-center" th:text="${titulo}"></h1>	
-		
+		<div class="shadow-lg p-3 mb-4 bg-white rounded"></div>
 	</div>
 	
 	<div class="container-fluid" id="background-head">
-	<div class="card bg-light">	
-		<div class="card-body">
+
 	
 		<a class="btn btn-primary btn-sm" th:href="@{/ventas/createventa}"
 		th:text="'New Record'" title="Create A New Record">
 		</a>
 		
 		
-		<table class="table">
+		<table class="table table-striped">
 			<thead class="thead-dark">
 				<tr>
 					<th scope="col">SALE RECORD ID</th>
@@ -80,8 +79,7 @@
 
 
 	</div>
-</div>
-</div>
+
 	<footer th:replace="plantilla/template :: footer"></footer>
 
 </body>

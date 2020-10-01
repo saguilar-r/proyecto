@@ -1,22 +1,25 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
 <head th:replace="plantilla/template :: head">
-
+<meta charset="UTF-8">
 </head>
 <body>
 	<header th:replace="plantilla/template :: header"></header>
 	<!-- <h1></h1> -->
 	<div class="jumbotron">
-		<h1 class="display-4">Welcome to SIICORE!</h1>
-		<p class="lead">We invite you to know us and be part of this great experience</p>
+		<!-- <h1 class="display-4">Welcome to SIICORE!</h1> -->
+		<h1 class="display-4">Bienvenido a SIICORE!</h1>
+	<!-- 	<p class="lead">Five out of five cars prefer us</p> -->
+		<p class="lead">5 de cada 5 autos nos prefieren</p>
 		<hr class="my-4">
-		<p>What are you waiting for?</p>
+	<!-- 	<p>What are you waiting for?</p> -->
+		<p>¿Qué estas esperando para unirte a la familia?</p>
 		<a class="btn btn-primary btn-lg" href="#" role="button">Learn
 			more</a>
+			
 	</div>
 	<div class="container" >
 	<div class="row">
-	<!-- <div class="col-15"> -->
 	<div id="carouselExampleIndicators" class="carousel slide"
 		data-ride="carousel">
 		<ol class="carousel-indicators">
@@ -51,7 +54,6 @@
 	</div>
 </div>
 </div>
-<!-- </div> -->
 	<footer th:replace="plantilla/template :: footer"></footer>
 </body>
 </html>

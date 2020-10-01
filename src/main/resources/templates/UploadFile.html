@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+	<meta charset="UTF-8">
+	
+</head>
+<body>
+	<h1>CARGA</h1>
+	<form th:action="@{/cargar-info}" th:object="${producto}" method="POST" enctype="multipart/form-data">
+		<input type="file" th:field="*{file}" name="file" /><br><br>
+		<input type="submit" value="Cargar"/>
+	</form>
+</body>
+</html>

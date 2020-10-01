@@ -9,6 +9,9 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
+import javax.persistence.Transient;
+
+import org.springframework.web.multipart.MultipartFile;
 
 @Entity
 @Table(name="productos")
@@ -36,6 +39,17 @@ public class Producto implements Serializable{
 	private String imagen;
 	private boolean estado;
 	
+	@Transient
+	private MultipartFile file;
+	
+	public MultipartFile getFile() {
+		return file;
+	}
+
+	public void setFile(MultipartFile file) {
+		this.file = file;
+	}
+
 	//DECLARAR LLAVE FORANEA
 	@ManyToOne
 	@JoinColumn(name="id_categoria_producto")

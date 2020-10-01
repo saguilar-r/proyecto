@@ -12,7 +12,7 @@
 		<div class="card-header bg-dark text-white" th:text="${titulo}"></div>
 		<div class="card-body">
 		
-			<form th:action="@{/productos/saveProducto}" th:object="${producto}" method ="post">
+			<form th:action="@{/productos/saveProducto}" th:object="${producto}" method ="post" enctype="multipart/form-data">
 			<div class="form-group row">
 			
 				<input type="hidden" th:field="*{id_producto}">
@@ -111,9 +111,8 @@
 			
 			<div class="form-group row">
 				<label class="col-md-2" for="imagen">IMAGE: </label> 
-				<input type="text" th:field="*{imagen}" class="form-control form-control-sm col-md-6"  id="imagen" 
-				placeholder="image">
-				<small></small>	
+				<input type="file" name="file" class="form-control form-control-sm col-md-6"  id="imagen">
+	
 			</div>
 			
 			<div class="form-group row">
