@@ -1,6 +1,7 @@
 package com.springboot.siicoreapp.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.annotation.Secured;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -20,14 +21,16 @@ public class CategoriaTerceroController {
 	@Autowired
 	private ICategoriaTercero categoriaTerceroService;
 	
+	@Secured({"ROLE_VENDEDOR", "ROLE_ADMIN"})
 	@GetMapping("/")
 	public String listarTodos(Model model) {
-		model.addAttribute("titulo", "THIRD PARTIES CATEGORY");
+		model.addAttribute("titulo", "CATEGORIA TERCERO");
 		model.addAttribute("cterceros", categoriaTerceroService.listarTodos());
 		
 		return "/views/cterceros/listaCTerceros";
 	}
 
+	@Secured({"ROLE_VENDEDOR", "ROLE_ADMIN"})
 	@GetMapping("/createcterceros")
 	public String crear(Model model) {
 		
@@ -37,6 +40,7 @@ public class CategoriaTerceroController {
 		return "/views/cterceros/frmCTerceros";
 	}
 	
+	@Secured({"ROLE_VENDEDOR", "ROLE_ADMIN"})
 	@PostMapping("/savecterceros")
 	public String guardar(@ModelAttribute CategoriaTercero categoriaTercero, Model model, RedirectAttributes attr) {
 		
@@ -46,6 +50,7 @@ public class CategoriaTerceroController {
 		return "redirect:/cterceros/";
 	}
 	
+	@Secured({"ROLE_VENDEDOR", "ROLE_ADMIN"})
 	@GetMapping("/edit/{id_categoria_tercero}")
 	public String editar(@PathVariable ("id_categoria_tercero") Long idCategoriaTercero, Model model) {
 		
@@ -56,6 +61,7 @@ public class CategoriaTerceroController {
 		
 	}
 	
+	@Secured("ROLE_ADMIN")
 	@GetMapping("/delete/{id_categoria_tercero}")
 	public String eliminar(@PathVariable ("id_categoria_tercero") Long idCategoriaTercero, Model model, RedirectAttributes attr) {
 		

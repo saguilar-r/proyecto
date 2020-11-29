@@ -1,6 +1,7 @@
 package com.springboot.siicoreapp.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.annotation.Secured;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -31,16 +32,17 @@ public class DetalleCompraController {
 	@Autowired
 	private IProductoService productoService;
 	
-	
+	@Secured({"ROLE_AUXILIAR", "ROLE_ADMIN","ROLE_ALMACENISTA"})
 	@GetMapping("/")
 	public String listar(Model model) {
 		
-		model.addAttribute("titulo", "PURCHASE DETAIL RECORDS");
+		model.addAttribute("titulo", "DETALLE COMPRAS");
 		model.addAttribute("dcompras", detalleCompraService.listarTodos());
 		
 		return "/views/detalleCompras/listaDetalleC";
 	}
 	
+	@Secured({"ROLE_AUXILIAR", "ROLE_ADMIN"})
 	@GetMapping("/createDetalleC")
 	public String crear(Model model) {
 		
@@ -52,6 +54,7 @@ public class DetalleCompraController {
 		return "/views/detalleCompras/frmDetalleC";
 	}
 	
+	@Secured({"ROLE_AUXILIAR", "ROLE_ADMIN"})
 	@PostMapping("/saveDetalleC")
 	public String guardar(@ModelAttribute DetalleCompra detalleCompra, Model model, RedirectAttributes attr) {
 		
@@ -64,6 +67,7 @@ public class DetalleCompraController {
 		
 	}
 	
+	@Secured({"ROLE_AUXILIAR", "ROLE_ADMIN"})
 	@GetMapping("/edit/{id_detalle_registro_compra}")
 	public String editar(@PathVariable("id_detalle_registro_compra") Long idDetalleCompra, Model model) {
 	
@@ -74,7 +78,7 @@ public class DetalleCompraController {
 		
 		return "/views/detalleCompras/frmDetalleC";
 	}
-	
+	@Secured("ROLE_ADMIN")
 	@GetMapping("/delete/{id_detalle_registro_compra}")
 	public String eliminar(@PathVariable("id_detalle_registro_compra") Long idDetalleCompra, RedirectAttributes attr) {
 		

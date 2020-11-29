@@ -1,6 +1,7 @@
 package com.springboot.siicoreapp.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.annotation.Secured;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -31,16 +32,16 @@ public class DetalleInventarioController {
 	@Autowired
 	private IProductoService productoService;
 	
-	
+	@Secured({"ROLE_ALMACENISTA", "ROLE_ADMIN"})
 	@GetMapping("/")
 	public String listar(Model model) {
 		
-		model.addAttribute("titulo", "STOCK DETAIL RECORDS");
+		model.addAttribute("titulo", "DETALLE STOCK");
 		model.addAttribute("dstock", detalleInventarioService.listarTodos());
 		
 		return "/views/detalleInventario/listaDetalleS";
 	}
-	
+	@Secured({"ROLE_ALMACENISTA", "ROLE_ADMIN"})
 	@GetMapping("/createDetalleS")
 	public String crear(Model model) {
 		
@@ -51,7 +52,7 @@ public class DetalleInventarioController {
 		
 		return "/views/detalleInventario/frmDetalleS";
 	}
-	
+	@Secured({"ROLE_ALMACENISTA", "ROLE_ADMIN"})
 	@PostMapping("/saveDetalleS")
 	public String guardar(@ModelAttribute DetalleInventario detalleInventario, Model model, RedirectAttributes attr) {
 		
@@ -63,7 +64,7 @@ public class DetalleInventarioController {
     	return "redirect:/dstock/";
 		
 	}
-	
+	@Secured({"ROLE_ALMACENISTA", "ROLE_ADMIN"})
 	@GetMapping("/edit/{id_detalle_registro_inventario}")
 	public String editar(@PathVariable("id_detalle_registro_inventario") Long idDetalleStock, Model model) {
 	
@@ -74,7 +75,7 @@ public class DetalleInventarioController {
 		
 		return "/views/detalleInventario/frmDetalleS";
 	}
-	
+	@Secured({"ROLE_ALMACENISTA", "ROLE_ADMIN"})
 	@GetMapping("/delete/{id_detalle_registro_inventario}")
 	public String eliminar(@PathVariable("id_detalle_registro_inventario") Long idDetalleStock, RedirectAttributes attr) {
 		

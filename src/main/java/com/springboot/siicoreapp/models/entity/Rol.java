@@ -6,6 +6,8 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 @Entity
@@ -20,24 +22,38 @@ public class Rol implements Serializable{
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private Long id_rol;
-	private String nombre_rol;
+	private String rol;
 	
-	
+	@ManyToOne
+	@JoinColumn(name="user_id")
+	private User user;
+
 	public Long getId_rol() {
 		return id_rol;
 	}
+
 	public void setId_rol(Long id_rol) {
 		this.id_rol = id_rol;
 	}
-	public String getNombre_rol() {
-		return nombre_rol;
+
+	public String getRol() {
+		return rol;
 	}
-	public void setNombre_rol(String nombre_rol) {
-		this.nombre_rol = nombre_rol;
+
+	public void setRol(String rol) {
+		this.rol = rol;
 	}
+
+	public User getUser() {
+		return user;
+	}
+
+	public void setUser(User user) {
+		this.user = user;
+	}
+
 	@Override
 	public String toString() {
-		return "Roles [id_rol=" + id_rol + ", nombre_rol=" + nombre_rol + "]";
+		return "Rol [id_rol=" + id_rol + ", rol=" + rol + ", user=" + user + "]";
 	}
-	
 }

@@ -5,6 +5,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.springboot.siicoreapp.models.service.MailService;
 
@@ -20,11 +21,13 @@ public class MailController {
     }
 
     @PostMapping("/sendMail")
-    public String sendMail(@RequestParam("name") String name, @RequestParam("mail") String mail, @RequestParam("subject") String subject, @RequestParam("body") String body){
+    public String sendMail( @RequestParam("subject") 
+    String subject, @RequestParam("body") String body, RedirectAttributes attr){
 
-        String message = body +"\n\n Datos de contacto: " + "\nNombre: " + name + "\nE-mail: " + mail;
+        String message = body +"\n\n Datos de contacto: ";
         mailService.sendMail("siicoreweb@gmail.com",subject,message);
+        attr.addFlashAttribute("success", "Correo enviado exitosamente");
  
-        return "/views/mail/send_mail_view";
+        return "redirect:/mail/";
     }
 }

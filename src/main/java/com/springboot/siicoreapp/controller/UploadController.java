@@ -1,6 +1,7 @@
 package com.springboot.siicoreapp.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.annotation.Secured;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -11,6 +12,7 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import com.springboot.siicoreapp.models.entity.Producto;
 import com.springboot.siicoreapp.models.service.UFService;
 
+@Secured("ROLE_ADMIN")
 @Controller
 public class UploadController {
 	
@@ -39,7 +41,7 @@ public class UploadController {
 			redirectAttributes.addFlashAttribute("success","Se ha cargado la informacion correctamente a la base de datos!");
 		} else {
 			redirectAttributes.addFlashAttribute("error","Oh no!, algo ha ocurrido, por favor revise las recomendaciones.");
-			return "redirect:/producto/cargar-info";
+			return "redirect:/cargar-info";
 		}
 
 		return "redirect:/productos/";

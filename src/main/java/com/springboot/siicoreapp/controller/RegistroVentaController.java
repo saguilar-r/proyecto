@@ -1,6 +1,7 @@
 package com.springboot.siicoreapp.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.annotation.Secured;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -14,6 +15,7 @@ import com.springboot.siicoreapp.models.entity.RegistroVenta;
 import com.springboot.siicoreapp.models.service.IRegistroVentasService;
 import com.springboot.siicoreapp.models.service.ITerceroService;
 
+
 @Controller
 @RequestMapping("/ventas")
 public class RegistroVentaController {
@@ -24,10 +26,12 @@ public class RegistroVentaController {
 	@Autowired
 	private ITerceroService terceroService;
 	
+	
+	@Secured("ROLE_USER")
 	@GetMapping("/")
 	public String listarTodos(Model model) {
 		
-		model.addAttribute("titulo", "SALES MODULE");
+		model.addAttribute("titulo", "REGISTRO VENTAS");
 		model.addAttribute("rventas", registroVentasService.listarTodos());
 		
 		return "/views/registroVentas/listarRegVentas";
@@ -43,8 +47,9 @@ public class RegistroVentaController {
 		return "/views/registroVentas/frmRegVentas";
 	}
 	
+	
 	@PostMapping("/saveventa")
-	public String guardar(@ModelAttribute RegistroVenta registroVenta, Model model, RedirectAttributes attr) {
+	public String guardar( @ModelAttribute RegistroVenta registroVenta, Model model, RedirectAttributes attr) {
 		
 		registroVentasService.guardar(registroVenta);
 		attr.addFlashAttribute("success", "Record saved successfully");
@@ -53,6 +58,7 @@ public class RegistroVentaController {
 		return "redirect:/ventas/";
 	}
 
+	
 	@GetMapping("/edit/{id_registro_venta}")
 	public String editar (@PathVariable ("id_registro_venta") Long idRegistroVenta, Model model) {
 		
@@ -62,6 +68,7 @@ public class RegistroVentaController {
 		
 		return "/views/registroVentas/frmRegVentas";
 	}
+	
 	
 	@GetMapping("/delete/{id_registro_venta}")
 	public String eliminar(@PathVariable("id_registro_venta")Long idRegistroVenta, RedirectAttributes attr) {

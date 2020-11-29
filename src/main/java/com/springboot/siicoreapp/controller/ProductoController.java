@@ -6,6 +6,7 @@ import java.nio.file.Path;
 import java.nio.file.Paths;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.annotation.Secured;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -31,15 +32,17 @@ public class ProductoController {
 	@Autowired
 	private ICategoriaProductoService categoriaProductoService;
 	
+	@Secured({"ROLE_VENDEDOR", "ROLE_ADMIN", "ROLE_ALMACENISTA"})
 	@GetMapping("/")
 	public String listarTodos(Model model) {
 		
-		model.addAttribute("titulo", "PRODUCT LIST");
+		model.addAttribute("titulo", "PRODUCTOS");
 		model.addAttribute("productos", productoService.listarTodos());
 		
 		return "/views/productos/listaProductos";
 	}
 	
+	@Secured({"ROLE_ADMIN", "ROLE_ALMACENISTA"})
 	@GetMapping("/createProducto")
 	public String crear(Model model) {
 		
@@ -49,7 +52,7 @@ public class ProductoController {
 		
 		return "/views/productos/formProductos";
 	}
-	
+	@Secured({"ROLE_ADMIN", "ROLE_ALMACENISTA"})
 	@PostMapping("/saveProducto")
 	public String guardar(@ModelAttribute Producto producto, Model model, @RequestParam("file") MultipartFile imagen, RedirectAttributes attr) {
 		
@@ -77,7 +80,7 @@ public class ProductoController {
 		
 		return "redirect:/productos/";
 	}
-	
+	@Secured({"ROLE_ADMIN", "ROLE_ALMACENISTA"})
 	@GetMapping("/edit/{id_producto}")
 	public String editar(@PathVariable ("id_producto") Long idProducto,Model model) {
 		model.addAttribute("titulo", "Form: Edit Product");
@@ -87,7 +90,7 @@ public class ProductoController {
 		return "/views/productos/formProductos";
 		
 	}
-	
+	@Secured({"ROLE_ADMIN", "ROLE_ALMACENISTA"})
 	@GetMapping("/delete/{id_producto}")
 	public String eliminar(@PathVariable("id_producto")Long idProducto, Model model, RedirectAttributes attr) {
 		

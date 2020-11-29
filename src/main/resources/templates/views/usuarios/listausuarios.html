@@ -5,6 +5,7 @@
 <body>
 	<header th:replace="plantilla/template :: header"></header>
 
+<br><br><br><br><br><br>
 	<div class="container">
 
 		<div class="alert alert-success alert-dismissible fade show"
@@ -23,7 +24,7 @@
 				<span aria-hidden="true">&times;</span>
 			</button>
 		</div>
-
+<br><br><br><br>
 		<h1 class="display-3 text-center" th:text="${titulo}"></h1>
 		<div class="shadow-lg p-3 mb-5 bg-white rounded"></div>
 	</div>
@@ -38,28 +39,26 @@
 				<table class="table table-striped">
 					<thead class="thead-dark">
 						<tr>
-							<th scope="col">USER ID</th>
+							<th scope="col">ID USUARIO</th>
 							<th scope="col">USERNAME</th>
-							<th scope="col">KEY</th>
-							<th scope="col">STATUS</th>
-							<th scope="col">ROLE NAME</th>
-							<th scope="col">ACTIONS</th>
+							<th scope="col">PASSWORD</th>
+							<th scope="col">ESTADO</th>
+							<th scope="col">ACCIONES</th>
 
 						</tr>
 					</thead>
 					<tbody>
 						<tr th:each="cl:${usuarios}">
-							<th scope="row" th:text="${cl.id_usuario}"></th>
+							<th scope="row" th:text="${cl.id}"></th>
 							<td th:text="${cl.username}"></td>
-							<td th:text="${cl.clave}"></td>
-							<td th:text="${cl.estado}"></td>
-							<td th:text="${cl.rol.nombre_rol}"></td>
+							<td th:text="${cl.password}"></td>
+							<td th:text="${cl.enabled}"></td>
 							<td><a class="btn btn-warning btn-sm"
-								th:href="@{/usuarios/edit/} + ${cl.id_usuario}" th:text="'Edit'"
+								th:href="@{/usuarios/edit/} + ${cl.id}" th:text="'Edit'"
 								title="Record Edit"
 								onclick="return confirm('Do you want edit this field?');">>
 							</a> <a class="btn btn-danger btn-sm"
-								th:href="@{/usuarios/delete/} + ${cl.id_usuario}"
+								th:href="@{/usuarios/delete/} + ${cl.id}"
 								th:text="'Delete'" title="Record Delete"
 								onclick="return confirm('Do you want delete this record?');">
 							</a></td>

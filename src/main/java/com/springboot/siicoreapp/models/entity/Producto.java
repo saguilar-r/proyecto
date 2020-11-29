@@ -1,4 +1,4 @@
-package com.springboot.siicoreapp.models.entity;
+	package com.springboot.siicoreapp.models.entity;
 
 import java.io.Serializable;
 

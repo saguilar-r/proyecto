@@ -8,15 +8,17 @@
 	
 	<div class="container"> 
 	
+	<br><br><br><br><br><br><br>
+	
 		<div class="card bg-light">
-		<div class="card-header bg-dark text-white" th:text="${titulo}"></div>
+		<div class="card-header bg-dark text-white" ><h1 class="display-4 text-center">NEW PRODUCT</h1></div>
 		<div class="card-body">
 		
 			<form th:action="@{/productos/saveProducto}" th:object="${producto}" method ="post" enctype="multipart/form-data">
 			<div class="form-group row">
 			
 				<input type="hidden" th:field="*{id_producto}">
-				<label class="col-md-2" for="id_categoria_producto">PRODUCT CATEGORY:</label> 
+				<label class="col-md-2" for="id_categoria_producto"><strong>PRODUCT CATEGORY:</strong></label> 
 				<select th:field="*{catproductos}" class="form-control form-control-sm col-md-6"  id="id_categoria_producto">
 				<option th:each="ct:${ctproductos}"
 				 th:value="${ct.id_categoria_producto}"
@@ -26,97 +28,97 @@
 			</div>
 			
 			<div class="form-group row">
-				<label class="col-md-2" for="codigo">PRODUCT CODE:</label> 
+				<label class="col-md-2" for="codigo"><strong>PRODUCT CODE:</strong></label> 
 				<input type="text" th:field="*{codigo}" class="form-control form-control-sm col-md-6"  id="codigo"
 				placeholder="code">
 				<small></small>	
 			</div>
 			
 			<div class="form-group row">
-				<label class="col-md-2" for="nombre_producto">PRODUCT NAME:</label> 
+				<label class="col-md-2" for="nombre_producto"><strong>PRODUCT NAME:</strong></label> 
 				<input type="text" th:field="*{nombre_producto}" class="form-control form-control-sm col-md-6"  id="nombre_producto"
 				placeholder="Product Name">
 				<small></small>	
 			</div>
 			
 			<div class="form-group row">
-				<label class="col-md-2" for="descripcion">PRODUCT DESCRIPTION:</label> 
+				<label class="col-md-2" for="descripcion"><strong>PRODUCT DESCRIPTION:</strong></label> 
 				<input type="text" th:field="*{descripcion}" class="form-control form-control-sm col-md-6"  id="descripcion"
 				placeholder="Product Description">
 				<small></small>	
 			</div>
 			
 			<div class="form-group row">
-				<label class="col-md-2" for="stock">STOCK:</label> 
+				<label class="col-md-2" for="stock"><strong>STOCK:</strong></label> 
 				<input type="text" th:field="*{stock}" class="form-control form-control-sm col-md-6"  id="stock"
 				placeholder="Stock">
 				<small></small>	
 			</div>
 			
 			<div class="form-group row">
-				<label class="col-md-2" for="precio_compra">PURCHASE COST:</label> 
+				<label class="col-md-2" for="precio_compra"><strong>PURCHASE COST:</strong></label> 
 				<input type="text" th:field="*{precio_compra}" class="form-control form-control-sm col-md-6"  id="precio_compra"
 				placeholder="Purchase Cost">
 				<small></small>	
 			</div>
 			
 			<div class="form-group row">
-				<label class="col-md-2" for="precio_venta">SALE COST:</label> 
+				<label class="col-md-2" for="precio_venta"><strong>SALE COST:</strong></label> 
 				<input type="text" th:field="*{precio_venta}" class="form-control form-control-sm col-md-6"  id="precio_venta"
 				placeholder="Sale Cost">
 				<small></small>	
 			</div>
 			
 			<div class="form-group row">
-				<label class="col-md-2" for="marca_producto">PRODUCT BRAND:</label> 
+				<label class="col-md-2" for="marca_producto"><strong>PRODUCT BRAND:</strong></label> 
 				<input type="text" th:field="*{marca_producto}" class="form-control form-control-sm col-md-6"  id="marca_producto"
 				placeholder="Product Brand">
 				<small></small>	
 			</div>
 
 			<div class="form-group row">
-				<label class="col-md-2" for="marca_coche">CAR BRAND:</label> 
+				<label class="col-md-2" for="marca_coche"><strong>CAR BRAND:</strong></label> 
 				<input type="text" th:field="*{marca_coche}" class="form-control form-control-sm col-md-6"  id="marca_coche" 
 				placeholder="Car Brand">
 				<small></small>	
 			</div>
 				
 				<div class="form-group row">
-				<label class="col-md-2" for="referencia">REFERENCE:</label> 
+				<label class="col-md-2" for="referencia"><strong>REFERENCE:</strong></label> 
 				<input type="text" th:field="*{referencia}" class="form-control form-control-sm col-md-6"  id="referencia" 
 				placeholder="referencia">
 				<small></small>	
 			</div>
 			
 				<div class="form-group row">
-				<label class="col-md-2" for="modelo">CAR MODEL: </label> 
+				<label class="col-md-2" for="modelo"><strong>CAR MODEL:</strong> </label> 
 				<input type="text" th:field="*{modelo}" class="form-control form-control-sm col-md-6"  id="modelo" 
 				placeholder="Car model">
 				<small></small>	
 			</div>
 			
 			<div class="form-group row">
-				<label class="col-md-2" for="lado">SIDE: </label> 
+				<label class="col-md-2" for="lado"><strong>SIDE:</strong> </label> 
 				<input type="text" th:field="*{lado}" class="form-control form-control-sm col-md-6"  id="lado" 
 				placeholder="Side">
 				<small></small>	
 			</div>
 			
 			<div class="form-group row">
-				<label class="col-md-2" for="ubicacion">LOCATION: </label> 
+				<label class="col-md-2" for="ubicacion"><strong>LOCATION:</strong> </label> 
 				<input type="text" th:field="*{ubicacion}" class="form-control form-control-sm col-md-6"  id="ubicacion" 
 				placeholder="Location">
 				<small></small>	
 			</div>
 			
 			<div class="form-group row">
-				<label class="col-md-2" for="imagen">IMAGE: </label> 
+				<label class="col-md-2" for="imagen"><strong>IMAGE: </strong></label> 
 				<input type="file" name="file" class="form-control form-control-sm col-md-6"  id="imagen">
 	
 			</div>
 			
 			<div class="form-group row">
-				<label class="col-md-2" for="estado">Status:</label> 
+				<label class="col-md-2" for="estado"><strong>Status:</strong></label> 
 				<select th:field="*{estado}" class="form-control form-control-sm col-md-6"  id="estado">
 				<option th:text="'Activo'" th:value="true"/>
 				<option th:text="'inactivo'" th:value="false"/>

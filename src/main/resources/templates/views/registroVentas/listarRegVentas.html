@@ -1,10 +1,12 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
+<html xmlns:th="http://www.thymeleaf.org"
+xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
 <head th:replace="plantilla/template :: head">
 </head>
 <body>
 	<header th:replace="plantilla/template :: header"></header>
 
+<br><br><br><br><br><br><br><br>
 	<div class="container">	
 	
 	<div class="alert alert-success alert-dismissible fade show"
@@ -32,22 +34,22 @@
 
 	
 		<a class="btn btn-primary btn-sm" th:href="@{/ventas/createventa}"
-		th:text="'New Record'" title="Create A New Record">
+		th:text="'New Record'" title="Nuevo Registro Venta">
 		</a>
 		
 		
 		<table class="table table-striped">
 			<thead class="thead-dark">
 				<tr>
-					<th scope="col">SALE RECORD ID</th>
-					<th scope="col">THIRD PARTIES ID</th>
-					<th scope="col">SALES SLIP TYPE</th> <!-- TIPO DE COMPROBANTE -->
-					<th scope="col">SALES SLIP NUMBER</th> <!-- NUMERO DE COMPROBANTE -->
-					<th scope="col">DATE</th>
-					<th scope="col">TOTAL PARCIAL</th> <!-- SUBTOTAL -->
-					<th scope="col">TAX</th> <!-- IMPUESTO -->
+					<th scope="col">ID VENTA</th>
+					<th scope="col">ID TERCEROS	</th>
+					<th scope="col">TIPO COMPROBANTE</th> <!-- TIPO DE COMPROBANTE -->
+					<th scope="col">No. COMPROBANTE</th> <!-- NUMERO DE COMPROBANTE -->
+					<th scope="col">FECHA</th>
 					<th scope="col">TOTAL</th>
-					<th scope="col">ACTIONS</th>
+					<th scope="col"  >EDITAR</th>
+					<th scope="col"  >ELIMINAR</th>
+
 					
 				</tr>
 			</thead>
@@ -58,18 +60,17 @@
 					<td th:text="${t.tipo_comprobante}"></td>
 					<td th:text="${t.num_comprobante}"></td>
 					<td th:text="${t.fecha}"></td>
-					<td th:text="${t.subtotal}"></td>
-					<td th:text="${t.impuesto}"></td>
 					<td th:text="${t.total}"></td>
-		
 					<td>
-					<a class="btn btn-warning btn-sm" th:href="@{/ventas/edit/} + ${t.id_registro_venta}" 
-					th:text="'Edit'" title="Record Edit"
-					onclick="return confirm('Do you want edit this field?');">
+					<a class="btn btn-primary btn-sm" th:href="@{/ventas/edit/} + ${t.id_registro_venta}" 
+					th:text="'Editar'" title="Editar Registro"
+					onclick="return confirm('¿Quiere editar este campo?');">
 					</a>
-					<a class="btn btn-danger btn-sm" th:href="@{/ventas/delete/} + ${t.id_registro_venta}" 
-					th:text="'Delete'" title="Record Delete"
-					onclick="return confirm('Do you want delete this field??');">
+					</td>
+					<td>
+					<a  class="btn btn-danger btn-sm" th:href="@{/ventas/delete/} + ${t.id_registro_venta}" 
+					th:text="'Eliminar'" title="Eliminar Registro"
+					onclick="return confirm('ATENCIÓN! ¿Desea eliminar este registro?');">
 					</a>
 					</td>
 								

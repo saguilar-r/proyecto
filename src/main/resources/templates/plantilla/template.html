@@ -1,21 +1,35 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
+<html xmlns:th="http://www.thymeleaf.org"
+	xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
 <head th:fragment="head">
 <meta charset="UTF-8">
 <title>SIICORE</title>
 <link rel="stylesheet" th:href="@{/css/bootstrap.min.css}">
+<link rel="stylesheet" th:href="@{/css/estilos.css}">
+<script src="https://kit.fontawesome.com/078f0fead8.js"
+	crossorigin="anonymous"></script>
+<link rel="stylesheet"
+	href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
+
 </head>
+
 <body>
 	<!-- BARRA DE NAVEGACION -->
+
+
 	<header th:fragment="header">
 
-		<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+
+		<nav class="navbar navbar-expand-md navbar-dark bgred fixed-top">
 			<!-- <nav class="navbar navbar-expand-lg navbar-light bg-light"> -->
 
 
 			<div class="container">
-				<a class="navbar-brand" href="#"> <strong>SIICORE</strong>
+				<a class="navbar-brand" th:href="@{/index}"> <img
+					th:src="@{/images/png.png}" src="../static/images/png.jpg"
+					width="200" height="70" class="d-inline-block align-top">
 				</a>
+
 				<button class="navbar-toggler" type="button" data-toggle="collapse"
 					data-target="#navbarSupportedContent"
 					aria-controls="navbarSupportedContent" aria-expanded="false"
@@ -27,77 +41,104 @@
 				<div class="collapse navbar-collapse" id="navbarSupportedContent">
 					<ul class="navbar-nav ml-auto">
 						<li class="nav-item active"><a class="nav-link"
-							th:href="@{/index}">Home <span class="sr-only">(current)</span>
+							th:href="@{/index}">HOME <span class="sr-only">(current)</span>
 						</a></li>
-						<li class="nav-item dropdown"><a
+						<li class="nav-item active"><a class="nav-link"
+							th:href="@{/index}">PRODUCTOS <span class="sr-only">(current)</span>
+						</a></li>
+						
+									<li  class="nav-item dropdown" sec:authorize="isAuthenticated()"><a
 							class="nav-link dropdown-toggle" href="#" id="navbarDropdown"
 							role="button" data-toggle="dropdown" aria-haspopup="true"
-							aria-expanded="false"> Users & Third Parties </a>
+							aria-expanded="false"> TERCEROS </a>
 							<div class="dropdown-menu" aria-labelledby="navbarDropdown">
-								<a class="dropdown-item" th:href="@{/usuarios/}">Users</a>
+								<!-- <a class="dropdown-item" th:href="@{/usuarios/}">USUARIOS</a> -->
 								<div class="dropdown-divider"></div>
 								<div class="dropdown-divider"></div>
-								<a class="dropdown-item" th:href="@{/terceros/}">Third
-									Parties</a> <a class="dropdown-item" th:href="@{/cterceros/}">Category</a>
+								<a class="dropdown-item" th:href="@{/terceros/}">TERCEROS</a> <a
+									class="dropdown-item" th:href="@{/cterceros/}">CATEGORIA</a>
 
 							</div></li>
-						<li class="nav-item"><a class="nav-link" th:href="@{/rol/}">Roles</a></li>
-						<li class="nav-item dropdown"><a
+						<li class="nav-item" sec:authorize="isAuthenticated()">
+						<a class="nav-link" th:href="@{/rol/}">ROLES</a></li>
+						
+						<li class="nav-item dropdown" sec:authorize="isAuthenticated()"><a
 							class="nav-link dropdown-toggle" href="#" id="navbarDropdown"
 							role="button" data-toggle="dropdown" aria-haspopup="true"
-							aria-expanded="false"> Sales </a>
+							aria-expanded="false"> VENTAS </a>
+							
 							<div class="dropdown-menu" aria-labelledby="navbarDropdown">
-								<a class="dropdown-item" th:href="@{/ventas/}">Sales</a>
+								<a class="dropdown-item" th:href="@{/ventas/}">VENTAS</a>
 								<div class="dropdown-divider"></div>
 								<div class="dropdown-divider"></div>
-								<a class="dropdown-item" th:href="@{/dventas/}">Sale Details</a>
+								<a class="dropdown-item" th:href="@{/dventas/}">DETALLE
+									VENTAS</a>
 							</div></li>
-						<li class="nav-item dropdown"><a
+						<li class="nav-item dropdown" sec:authorize="isAuthenticated()"><a
 							class="nav-link dropdown-toggle" href="#" id="navbarDropdown"
 							role="button" data-toggle="dropdown" aria-haspopup="true"
-							aria-expanded="false"> Purchases </a>
+							aria-expanded="false"> COMPRAS </a>
 							<div class="dropdown-menu" aria-labelledby="navbarDropdown">
-								<a class="dropdown-item" th:href="@{/compras/}">Purchases</a>
+								<a class="dropdown-item" th:href="@{/compras/}">COMPRAS</a>
 								<div class="dropdown-divider"></div>
 								<div class="dropdown-divider"></div>
-								<a class="dropdown-item" th:href="@{/dcompras/}">Purchase
-									Details</a>
+								<a class="dropdown-item" th:href="@{/dcompras/}">DETALLE
+									COMPRAS</a>
 							</div></li>
 
-						<li class="nav-item dropdown"><a
+						<li class="nav-item dropdown" sec:authorize="isAuthenticated()"><a
 							class="nav-link dropdown-toggle" href="#" id="navbarDropdown"
 							role="button" data-toggle="dropdown" aria-haspopup="true"
-							aria-expanded="false"> Stock </a>
+							aria-expanded="false"> STOCK </a>
 							<div class="dropdown-menu" aria-labelledby="navbarDropdown">
-								<a class="dropdown-item" th:href="@{/stock/}">Stock Record</a> <a
-									class="dropdown-item" th:href="@{/dstock/}">Stock Record
-									Details</a>
+								<a class="dropdown-item" th:href="@{/stock/}">REGISTRO STOCK</a>
+								<a class="dropdown-item" th:href="@{/dstock/}">DETALLE STOCK</a>
 								<div class="dropdown-divider"></div>
-								<a class="dropdown-item" th:href="@{/ctproductos/}">Product
-									Categories</a> <a class="dropdown-item" th:href="@{/productos/}">Products</a>
+								<a class="dropdown-item" th:href="@{/ctproductos/}">CATEGORIA
+									PRODUCTO</a> <a class="dropdown-item" th:href="@{/productos/}">PRODUCTOS</a>
 							</div></li>
-						<li class="nav-item"><a class="btn btn-outline-primary"
-							th:href="@{/file}" th:text="'Upload'"
-							title="Upload Files"> </a></li>
-							
-							
+							<li class="nav-item active"><a class="nav-link"
+							th:href="@{/index}">CONTÁCTENOS <span class="sr-only">(current)</span>
+						</a></li>
+
 					</ul>
+					<ul class="navbar-nav nav-bar-right">
+						<li sec:authorize="!isAuthenticated()"><a
+							class="btn btn-sm btn-outline-danger" th:href="@{/login}">Iniciar
+								Sesión</a></li>
+
+						<li class="dropdown" sec:authorize="isAuthenticated()">
+							<a class="btn btn-outline-warning dropdown-toggle" href="#"
+								role="button" id="dropdownMenuLink" data-toggle="dropdown"
+								aria-haspopup="true" aria-expanded="false"> 
+								<span sec:authentication="name"></span>
+								</a>
+
+							<div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+								<a class="dropdown-item" href="#">Perfil</a> <a
+									class="dropdown-item" href="#">Cambiar Contraseña</a>
+									
+									<form th:action="@{/logout}" method="post">
+										<button class="dropdown-item" type="submit">Cerrar Sesión</button>
+									</form>
+							
+							</div>
+						</li>
+					</ul>
+
 				</div>
 			</div>
 		</nav>
 
 	</header>
 
-	<!-- CONTENIDO -->
-	<div class="container"></div>
-
 
 	<!-- PIE DE PAGINA -->
-	<footer th:fragment="footer"
-		class="bg-dark text-center text-white fixed-bottom">
-		<div class="container">
-			<p>Copyright SIICORE&copy; - 2020</p>
-		</div>
+	<footer th:fragment="footer" id="pieprincipal"
+		class=" text-center text-white fixed-bottom">
+
+		<small>Copyright SIICORE&copy; - 2020</small>
+
 
 		<script type="text/javascript"
 			th:src="@{/js/jquery-3.5.1.slim.min.js}"></script>

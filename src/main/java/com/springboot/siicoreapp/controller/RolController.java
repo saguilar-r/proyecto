@@ -3,6 +3,7 @@ package com.springboot.siicoreapp.controller;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.annotation.Secured;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -14,8 +15,9 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.springboot.siicoreapp.models.entity.Rol;
 import com.springboot.siicoreapp.models.service.IRolService;
+import com.springboot.siicoreapp.models.service.IUsuarioService;
 
-
+@Secured("ROLE_ADMIN")
 @Controller
 @RequestMapping("/rol")
 public class RolController {
@@ -23,12 +25,16 @@ public class RolController {
 	@Autowired
 	private IRolService rolService;
 	
+	@Autowired
+	private IUsuarioService usuarioService;
+	
+	@Secured("ROLE_USER")
 	@GetMapping("/")
 	public String listarRoles(Model model) {
 		
 		List<Rol> listadoRoles = rolService.listarRoles();
 		
-		model.addAttribute("titulo", "ROLE LIST");
+		model.addAttribute("titulo", "ROLES");
 		model.addAttribute("roles", listadoRoles);
 		
 		return "/views/roles/listar";
@@ -41,16 +47,17 @@ public class RolController {
 		
 		model.addAttribute("titulo", "Form: New Role");
 		model.addAttribute("rol", rol);
-		
+		model.addAttribute("usuario", usuarioService.ListarTodos());
 		return "/views/roles/frmCrear";
 	}
 	
 	@PostMapping("/save") 
-	public String guardar(@ModelAttribute Rol rol, RedirectAttributes attr) {
+	public String guardar(@ModelAttribute Rol rol, Model model, RedirectAttributes attr) {
 			  
 		rolService.guardar(rol);
-		attr.addFlashAttribute("success", "Role saved successfully");
-		System.out.println("Role saved successfully"); 
+		attr.addFlashAttribute("success", "Rol guardado exitosamente");
+		System.out.println("Rol guardado exitosamente");
+		model.addAttribute("usuario", usuarioService.ListarTodos());
 	    return "redirect:/rol/"; 	
 	    
 	}
@@ -77,9 +84,9 @@ public class RolController {
 		/* Rol rol = new Rol(); */
 		
 		
-		
 		model.addAttribute("titulo", "Formulario: Rol Edit");
 		model.addAttribute("rol", rolService.buscarPorId(idRol));
+		model.addAttribute("usuario", usuarioService.ListarTodos());
 		
 
 		return "/views/roles/frmCrear";

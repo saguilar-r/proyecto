@@ -6,7 +6,7 @@
 <body>
 	<header th:replace="plantilla/template :: header"></header>
 	<div class="container">
-	
+	<br><br><br><br><br><br>
 	<div class="alert alert-success alert-dismissible fade show"
 			role="alert" th:if="${success}">
 			<strong th:text="${success}"></strong>
@@ -24,9 +24,13 @@
 			</button>
 		</div>
 		<h1></h1>
+		
+		<br><br><br><br>
 		<h1 class="display-3 text-center" th:text="${titulo}"></h1>
 		<div class="shadow-lg p-3 mb-5 bg-white rounded"></div>
 	</div>
+	
+	
 	<div class="container">
 
 
@@ -37,8 +41,9 @@
 		<table class="table table-striped">
 			<thead class="thead-dark">
 				<tr>
-					<th scope="col">ROLE ID</th>
-					<th scope="col">ROLE NAME</th>
+					<th scope="col">ID ROL</th>
+					<th scope="col">USUARIO ID</th>
+					<th scope="col">ROL</th>
 					<th scope="col">ACTIONS</th>
 					
 				</tr>
@@ -46,7 +51,8 @@
 			<tbody>
 				<tr th:each="r:${roles}">
 					<th scope="row" th:text="${r.id_rol}"></th>
-					<td th:text="${r.nombre_rol}"></td>
+					<td th:text="${r.user.username}"></td>
+					<td th:text="${r.rol}"></td>
 					<td>
 					<!-- <a th:ref="@{/views/roles/edit/} + ${r.id_rol}" class="btn btn-warning">Edit</a> -->
 					<a class="btn btn-warning btn-sm" th:href="@{/rol/edit/} + ${r.id_rol}"

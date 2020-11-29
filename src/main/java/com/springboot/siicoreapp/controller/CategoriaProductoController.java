@@ -1,6 +1,7 @@
 package com.springboot.siicoreapp.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.annotation.Secured;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -20,15 +21,17 @@ public class CategoriaProductoController {
 	@Autowired
 	private ICategoriaProductoService categoriaProductoService;
 	
+	@Secured({"ROLE_ALMACENISTA", "ROLE_ADMIN"})
 	@GetMapping("/")
 	public String listarTodos(Model model) {
 		
-		model.addAttribute("titulo", "PRODUCT CATEGORY");
+		model.addAttribute("titulo", "CATEGORIA PRODUCTO");
 		model.addAttribute("ctproducto", categoriaProductoService.listarTodos());
 		
 		return "/views/ctproductos/listarCtProductos";
 	}
 	
+	@Secured({"ROLE_ALMACENISTA", "ROLE_ADMIN"})
 	@GetMapping("/createctp")
 	public String crear(Model model) {
 		
@@ -38,6 +41,7 @@ public class CategoriaProductoController {
 		return "/views/ctproductos/formCtProductos";
 	}
 	
+	@Secured({"ROLE_ALMACENISTA", "ROLE_ADMIN"})
 	@PostMapping("/savectproductos")
 	public String guardar(@ModelAttribute CategoriaProducto categoriaProducto,Model model, RedirectAttributes attr) {
 		
@@ -47,6 +51,7 @@ public class CategoriaProductoController {
 		return "redirect:/ctproductos/";
 	}
 	
+	@Secured({"ROLE_ALMACENISTA", "ROLE_ADMIN"})
 	@GetMapping("/edit/{id_categoria_producto}")
 	public String editar(@PathVariable("id_categoria_producto") Long idCatProducto, Model model) {
 		
@@ -56,6 +61,7 @@ public class CategoriaProductoController {
 		return "/views/ctproductos/formCtProductos";
 	}
 	
+	@Secured({"ROLE_ALMACENISTA", "ROLE_ADMIN"})
 	@GetMapping("/delete/{id_categoria_producto}")
 	public String eliminar(@PathVariable("id_categoria_producto") Long idCatProducto, RedirectAttributes attribute) {
 

@@ -6,6 +6,8 @@
 <body>
 	<header th:replace="plantilla/template :: header" ></header>
 	
+	<br><br><br><br><br><br><br><br><br><br>
+	
 	<div class="container"> 
 	
 	<div class="card bg-light">
@@ -16,9 +18,17 @@
 			<div class="form-group row">
 			
 				<input type="hidden" th:field="*{id_rol}">
-				<label class="col-md-2" for="nombre_rol">Role:</label> 
-				<input type="text" th:field="*{nombre_rol}" class="form-control form-control-sm col-md-3"  id="nombre_rol"
-				placeholder="Role Types">
+				<label class="col-md-2" for="user_id">USER ID:</label> 
+				<select th:field="*{user}" class="form-control form-control-sm col-md-6"  id="user_id">
+				<option th:each="u:${usuario}"
+				th:value="${u.id}"
+				th:text="${u.id}"
+				/>
+				</select>
+				
+				<label class="col-md-2" for="rol">Rol:</label> 
+				<input type="text" th:field="*{rol}" class="form-control form-control-sm col-md-3"  id="rol"
+				placeholder="Rol">
 				<small></small>	
 			</div>
 			<div class="card-footer bg-dark">

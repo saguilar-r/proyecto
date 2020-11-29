@@ -1,14 +1,76 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
-<head>
-	<meta charset="UTF-8">
-	
+<head th:replace="plantilla/template :: head">
+<meta charset="UTF-8">
 </head>
 <body>
-	<h1>CARGA</h1>
-	<form th:action="@{/cargar-info}" th:object="${producto}" method="POST" enctype="multipart/form-data">
-		<input type="file" th:field="*{file}" name="file" /><br><br>
-		<input type="submit" value="Cargar"/>
-	</form>
+	<header th:replace="plantilla/template :: header"></header>
+
+	<div class="container">
+		<div class="card">
+			<div class="jumbotron">
+				<h1 style="text-align: center;">IMPORTAR PRODUCTOS</h1>
+			</div>
+
+			<div class="container-fluid">
+				<div class="row">
+					<div class="col-md-3">
+						<!-- Button trigger modal -->
+						<button type="button" class="btn btn-block btn-info"
+							data-toggle="modal" style="" data-target="#staticBackdrop">
+							Leer recomendaciones</button>
+
+						<!-- Modal -->
+						<div class="modal fade" id="staticBackdrop" data-backdrop="static"
+							data-keyboard="false" tabindex="-1"
+							aria-labelledby="staticBackdropLabel" aria-hidden="true">
+							<div class="modal-dialog">
+								<div class="modal-content">
+									<div class="modal-header">
+										<h5 class="modal-title" id="staticBackdropLabel">Tener en cuenta las siguientes recomendaciones
+										antes de cargar el archivo:</h5>
+										<button type="button" class="close" data-dismiss="modal"
+											aria-label="Close">
+											<span aria-hidden="true">&times;</span>
+										</button>
+									</div>
+									<div class="modal-body">
+											<strong>
+											- El archivo debe ser en formato .xlsx <br> <br>
+											- Asegurarse de que las columnas en el excel coincidan con
+											las columnas de dicha tabla.
+											<br> <br>
+											-Revisar que todos los campos estén llenos.
+											 <br> <br>  -Tener en cuenta los
+											caracteres especiales al nombrar las columnas. Estas deben
+											concidir con las columnas de la tabla.</strong>
+
+									</div>
+									<div class="modal-footer">
+										<button type="button" class="btn btn-primary"
+											data-dismiss="modal">Entendido</button>
+									</div>
+								</div>
+							</div>
+						</div>
+
+						<br>
+
+						<div class="col-md-3">
+							<form th:action="@{/cargar-info}" th:object="${producto}"
+								method="POST" enctype="multipart/form-data">
+								<input type="file" th:field="*{file}" name="file" /><br>
+								<br> <input type="submit" class="btn btn-primary"
+									value="Cargar" />
+							</form>
+
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<footer th:replace="plantilla/template :: footer"></footer>
 </body>
 </html>

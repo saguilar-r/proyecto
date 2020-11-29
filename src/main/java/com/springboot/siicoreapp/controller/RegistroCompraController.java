@@ -1,6 +1,7 @@
 package com.springboot.siicoreapp.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.annotation.Secured;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -25,15 +26,16 @@ public class RegistroCompraController {
 	@Autowired
 	private ITerceroService terceroService;
 	
+	@Secured({"ROLE_ADMIN", "ROLE_AUXILIAR", "ROLE_ALMACENISTA"})
 	@GetMapping("/")
 	public String listarTodos(Model model) {
 		
-		model.addAttribute("titulo", "PURCHASE MODULE");
+		model.addAttribute("titulo", "COMPRAS");
 		model.addAttribute("compra", registroCompraService.listaTodos());
 		
 		return "/views/compras/listarCompras";
 	}
-	
+	@Secured({"ROLE_ADMIN", "ROLE_AUXILIAR"})
 	@GetMapping("/createcompra")
 	public String crear(Model model) {
 		
@@ -43,7 +45,7 @@ public class RegistroCompraController {
 		
 		return "/views/compras/frmCompras";
 	}
-	
+	@Secured({"ROLE_ADMIN", "ROLE_AUXILIAR"})
 	@PostMapping("/savecompra")
 	public String guardar(@ModelAttribute RegistroCompra registroCompra, Model model, RedirectAttributes attr) {
 		
@@ -54,6 +56,7 @@ public class RegistroCompraController {
 		return "redirect:/compras/";
 	}
 	
+	@Secured({"ROLE_ADMIN", "ROLE_AUXILIAR"})
 	@GetMapping("/edit/{id_registro_compra}")
 	public String editar(@PathVariable ("id_registro_compra") Long idRegistroCompra, Model model) {
 		
@@ -63,7 +66,8 @@ public class RegistroCompraController {
 		
 		return "/views/compras/frmCompras";
 	}
-	
+	@Secured("ROLE_ADMIN")
+	@GetMapping("/delete/{id_registro_compra}")
 	public String eliminar(@PathVariable("id_registro_compra") Long idRegistroCompra, RedirectAttributes attr) {
 		
 		registroCompraService.eliminar(idRegistroCompra);

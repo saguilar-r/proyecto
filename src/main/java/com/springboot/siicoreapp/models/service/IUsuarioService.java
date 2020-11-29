@@ -2,13 +2,14 @@ package com.springboot.siicoreapp.models.service;
 
 import java.util.List;
 
-import com.springboot.siicoreapp.models.entity.Usuario;
+import com.springboot.siicoreapp.models.entity.User;
+
 
 public interface IUsuarioService {
 	
-	public List<Usuario> ListarTodos();
-	public void guardar(Usuario usuario);
-	public Usuario buscarPorId(Long id_usuario);
+	public List<User> ListarTodos();
+	public void guardar(User user);
+	public User buscarPorId(Long id_usuario);
 	public void eliminar(Long id_usuario);
 
 }

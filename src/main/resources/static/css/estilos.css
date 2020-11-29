@@ -1,0 +1,79 @@
+@import url('https://fonts.googleapis.com/css2?family=Krona+One&display=swap');
+
+
+.carousel-control-prev{
+	width:50px;
+}
+
+#carrusel1{
+
+	height: 300px;
+	width: 700px;
+	margin: 0;
+	margin-bottom: 450px;
+	float: left;
+}
+.text1 H1{
+	
+	font-family: 'Krona One', sans-serif;
+	text-align: left;
+	color: #fff;
+	font-size: 400%;
+	
+}
+
+.boton1{
+	
+	font-family: 'Krona One', sans-serif;
+	width: 300px;
+
+
+}
+
+.text2 h1{
+	
+	font-family: 'Krona One', sans-serif;
+	text-align: left;
+	color: #fff;
+	margin: 300px 0;
+	font-size: 400%;	
+}
+
+#carrusel3{
+
+	height: 300px;
+	width: 1050px;
+	margin-bottom: 500px;
+	float: left;
+}
+.text3 h1{
+	
+	font-family: 'Krona One', sans-serif;
+	text-align: left;
+	color: #fff;
+	font-size: 500%;
+
+}
+
+.b button{
+	
+	font-family: 'Krona One', sans-serif;
+	color: #fff;
+	font-size: 100%;
+	margin-top: 50px;
+	margin-bottom: 450px;
+	margin-right: 500px;
+	
+}
+
+.navbar-dark{
+	padding: 5px 0;
+}
+
+.bgred {
+	
+	background:black;
+}
+ #pieprincipal{
+ background-color: black;
+ }
