@@ -44,10 +44,11 @@
 							th:href="@{/index}">HOME <span class="sr-only">(current)</span>
 						</a></li>
 						<li class="nav-item active"><a class="nav-link"
-							th:href="@{/index}">PRODUCTOS <span class="sr-only">(current)</span>
+							th:href="@{/fproductos}">PRODUCTOS <span class="sr-only">(current)</span>
 						</a></li>
 						
-									<li  class="nav-item dropdown" sec:authorize="isAuthenticated()"><a
+									<li  class="nav-item dropdown" sec:authorize="hasRole('ROLE_ADMIN') or hasRole('ROLE_ALMACENISTA') 
+									or hasRole('ROLE_USER')"><a
 							class="nav-link dropdown-toggle" href="#" id="navbarDropdown"
 							role="button" data-toggle="dropdown" aria-haspopup="true"
 							aria-expanded="false"> TERCEROS </a>
@@ -59,10 +60,11 @@
 									class="dropdown-item" th:href="@{/cterceros/}">CATEGORIA</a>
 
 							</div></li>
-						<li class="nav-item" sec:authorize="isAuthenticated()">
+						<li  class="nav-item" sec:authorize="hasRole('ROLE_ADMIN')">
 						<a class="nav-link" th:href="@{/rol/}">ROLES</a></li>
 						
-						<li class="nav-item dropdown" sec:authorize="isAuthenticated()"><a
+						<li class="nav-item dropdown" sec:authorize="hasRole('ROLE_ADMIN') or hasRole('ROLE_ALMACENISTA') 
+									or hasRole('ROLE_VENDEDOR')"><a
 							class="nav-link dropdown-toggle" href="#" id="navbarDropdown"
 							role="button" data-toggle="dropdown" aria-haspopup="true"
 							aria-expanded="false"> VENTAS </a>
@@ -74,7 +76,8 @@
 								<a class="dropdown-item" th:href="@{/dventas/}">DETALLE
 									VENTAS</a>
 							</div></li>
-						<li class="nav-item dropdown" sec:authorize="isAuthenticated()"><a
+						<li class="nav-item dropdown" sec:authorize="hasRole('ROLE_ADMIN') or hasRole('ROLE_ALMACENISTA') 
+									or hasRole('ROLE_AUXILIAR')"  ><a
 							class="nav-link dropdown-toggle" href="#" id="navbarDropdown"
 							role="button" data-toggle="dropdown" aria-haspopup="true"
 							aria-expanded="false"> COMPRAS </a>
@@ -86,7 +89,8 @@
 									COMPRAS</a>
 							</div></li>
 
-						<li class="nav-item dropdown" sec:authorize="isAuthenticated()"><a
+						<li class="nav-item dropdown" sec:authorize="hasRole('ROLE_ADMIN') or hasRole('ROLE_ALMACENISTA') 
+									or hasRole('ROLE_VENDEDOR') or hasRole('ROLE_AUXILIAR')"><a
 							class="nav-link dropdown-toggle" href="#" id="navbarDropdown"
 							role="button" data-toggle="dropdown" aria-haspopup="true"
 							aria-expanded="false"> STOCK </a>

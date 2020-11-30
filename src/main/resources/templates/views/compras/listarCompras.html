@@ -1,5 +1,6 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
+<html xmlns:th="http://www.thymeleaf.org"
+xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
 <head th:replace="plantilla/template :: head">
 </head>
 <body>
@@ -41,15 +42,13 @@
 				<table class="table table-striped">
 					<thead class="thead-dark">
 						<tr>
-							<th scope="col">PURCHASE ID</th>
-							<th scope="col">THIRD PARTIES ID</th>
-							<th scope="col">SALES SLIP TYPE</th>
-							<th scope="col">SALES SLIP NUMBER</th>
-							<th scope="col">DATE</th>
-							<th scope="col">TOTAL PARCIAL</th>
-							<th scope="col">TAX</th>
+							<th scope="col">ID COMPRA</th>
+							<th scope="col">ID TERCERO</th>
+							<th scope="col">T.COMPROBANTE</th>
+							<th scope="col">No.COMPROBANTE</th>
+							<th scope="col">FECHA</th>
 							<th scope="col">TOTAL</th>
-							<th scope="col">ACTIONS</th>
+							<th scope="col">ACCION</th>
 
 						</tr>
 					</thead>
@@ -60,14 +59,12 @@
 							<td th:text="${c.tipo_comprobante}"></td>
 							<td th:text="${c.num_comprobante}"></td>
 							<td th:text="${c.fecha}"></td>
-							<td th:text="${c.subtotal}"></td>
-							<td th:text="${c.impuesto}"></td>
 							<td th:text="${c.total}"></td>
 							<td><a class="btn btn-warning btn-sm"
 								th:href="@{/compras/edit/} + ${c.id_registro_compra}" th:text="'Edit'"
 								title="Record Edit"
 								onclick="return confirm('Do you want edit this field?');">
-							</a> <a class="btn btn-danger btn-sm"
+							</a> <a class="btn btn-danger btn-sm"  sec:authorize="hasRole('ROLE_ADMIN') or hasRole('ROLE_ALMACENISTA')"
 								th:href="@{/compras/delete/} + ${c.id_registro_compra}"
 								th:text="'Delete'" title="Record Delete"
 								onclick="return confirm('Do you want delete this record?');">

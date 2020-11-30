@@ -28,7 +28,6 @@ public class RolController {
 	@Autowired
 	private IUsuarioService usuarioService;
 	
-	@Secured("ROLE_USER")
 	@GetMapping("/")
 	public String listarRoles(Model model) {
 		

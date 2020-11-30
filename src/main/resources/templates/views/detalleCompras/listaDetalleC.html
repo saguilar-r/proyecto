@@ -1,5 +1,6 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
+<html xmlns:th="http://www.thymeleaf.org"
+xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
 <head th:replace="plantilla/template :: head">
 </head>
 <body>
@@ -41,13 +42,12 @@
 		<table class="table table-striped">
 			<thead class="thead-dark">
 				<tr>
-					<th scope="col">PURCHASE DETAILS ID</th>
-					<th scope="col">PURCHASE ID</th>
-					<th scope="col">PRODUCT ID</th>
-					<th scope="col">QUANTITY</th>
-					<th scope="col">PRICE</th>
-					<th scope="col">DISCOUNT</th>
-					<th scope="col">ACTIONS</th>
+					<th scope="col">DETALLE COMPRA ID</th>
+					<th scope="col">COMPRA ID</th>
+					<th scope="col">PRODUCTO ID</th>
+					<th scope="col">CANTIDAD</th>
+					<th scope="col">PRECIO</th>
+					<th scope="col">ACCION</th>
 					
 				</tr>
 			</thead>
@@ -57,16 +57,14 @@
 					<td th:text="${c.compra.id_registro_compra}"></td>
 					<td th:text="${c.producto.id_producto}"></td>
 					<td th:text="${c.cantidad}"></td>
-					<td th:text="${c.precio}"></td>
-					<td th:text="${c.descuento}"></td>
-
-						
+					<td th:text="${c.precio}"></td>						
 					<td>
 					<a class="btn btn-warning btn-sm" th:href="@{/dcompras/edit/} + ${c.id_detalle_registro_compra}" 
 					th:text="'Edit'" title="Record Edit"
-					onclick="return confirm('Do you want edit this field?');">>
+					onclick="return confirm('Do you want edit this field?');">
 					</a>
-					<a class="btn btn-danger btn-sm" th:href="@{/dcompras/delete/} + ${c.id_detalle_registro_compra}" 
+					<a sec:authorize="hasRole('ROLE_ADMIN') or hasRole('ROLE_ALMACENISTA')" class="btn btn-danger btn-sm" 
+					th:href="@{/dcompras/delete/} + ${c.id_detalle_registro_compra}" 
 					th:text="'Delete'" title="Record Delete"
 					onclick="return confirm('Esta seguro de eliminar el registro?');">
 					</a>

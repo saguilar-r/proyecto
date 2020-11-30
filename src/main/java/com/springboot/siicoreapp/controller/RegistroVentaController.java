@@ -27,7 +27,7 @@ public class RegistroVentaController {
 	private ITerceroService terceroService;
 	
 	
-	@Secured("ROLE_USER")
+	@Secured({"ROLE_ADMIN","ROLE_VENDEDOR"})
 	@GetMapping("/")
 	public String listarTodos(Model model) {
 		
@@ -37,6 +37,7 @@ public class RegistroVentaController {
 		return "/views/registroVentas/listarRegVentas";
 	}
 	
+	@Secured("ROLE_ADMIN")
 	@GetMapping("/createventa")
 	public String crear(Model model) {
 		
