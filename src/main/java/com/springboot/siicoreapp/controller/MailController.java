@@ -24,7 +24,7 @@ public class MailController {
     public String sendMail( @RequestParam("subject") 
     String subject, @RequestParam("body") String body, RedirectAttributes attr){
 
-        String message = body +"\n\n Datos de contacto: ";
+        String message = body +"\n\n --------------------- \n\n Siicore Web - Contacto 5057896 ";
         mailService.sendMail("siicoreweb@gmail.com",subject,message);
         attr.addFlashAttribute("success", "Correo enviado exitosamente");
  

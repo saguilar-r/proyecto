@@ -1,9 +1,8 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
-<head th:replace="plantilla/template :: head">
+<head>
 <meta charset="UTF-8">
-</head>
-	
+
 <link rel="stylesheet"
 	href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css"
 	integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ"
@@ -21,7 +20,16 @@
 	crossorigin="anonymous"></script>
 <script src="https://use.fontawesome.com/5b5fa05dbf.js"></script>
 
-<body>
+<link rel="stylesheet" th:href="@{/css/contacto.css}">
+<link rel="stylesheet" th:href="@{/css/bootstrap.min.css}">
+<link rel="stylesheet"
+	href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
+
+</head>
+	
+
+
+<body id="body">
 
  <br> <br> <br> <br> <br> <br> 
 
@@ -37,15 +45,22 @@
 			</button>
 		</div>
 
+		<p class="animate__animated animate__bounce animate__fadeInDown" id="p"><strong>Latas Y Bomperes La 27</strong> <br><br> 
+		Teléfono Contacto: 5462896 <br> 
+		Dirección: Cra. 27b Bis #65 - 35, Barrios Unidos, Bogotá. <br>
+		Horario: Lunes a Viernes de 8:00 a 18:00. <br>
+				 Sábados 8:00 a 16:00 <br> 
+				</p>
 		
-		<div class="card">
-			<div class="jumbotron">
-				<h1 style="text-align: center;">Enviar e-mail</h1>
+		<div class=" animate__animated animate__bounce animate__fadeInDown card-dark">
+			<div class="jumbotron-dark">
+				<h1 style="text-align: center;">Contacta con nosotros</h1>
 			</div>
-			<form method="POST" th:action="@{/sendMail}" id="emailForm"
+			<br><br><br>
+			<form method="POST" th:action="@{/sendMails}" id="emailForm"
 				class="container">
 				<div class="form-group">
-					<!-- <label>Nombre</label>
+					<label>Nombre</label>
 					<div class="input-group mb-2 mr-sm-2 mb-sm-0">
 						<div class="input-group-addon">
 							<i class="fa fa-fw fa-user" aria-hidden="true"></i>
@@ -60,7 +75,7 @@
 						<div class="input-group-addon">@</div>
 						<input type="text" class="form-control" name="mail"
 							placeholder="Correo electrónico" />
-					</div> -->
+					</div>
 				</div>
 				<div class="form-group">
 					<label>Asunto</label>
@@ -83,5 +98,14 @@
 		</div>
 	</div>
 	
+	
+	
+	
+	<iframe class="animate__animated animate__bounce animate__fadeIn  animate__delay-1s"
+	 id="mapa" src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d15906.543341559902!2d-74.0738601!3d4.6588568!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0xf8e058ca7cb784f1!2slatas%20y%20bomperes%20la%2027!5e0!3m2!1ses!2sco!4v1606790107096!5m2!1ses!2sco" 
+	width="600" height="450" frameborder="0" style="border:0;" allowfullscreen="" aria-hidden="false" tabindex="0"></iframe>
+	
+	
 	<footer th:replace="plantilla/template :: footer"></footer>
 </body>
+</html>

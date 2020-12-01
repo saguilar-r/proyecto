@@ -5,17 +5,25 @@
     color: #ffffff;
 }
 
-#contacto{
+.card-dark{
+	width: 50%;
+	float:right;
+	margin-top: 7%;
+	margin-left: 20px;
+	margin-right: auto;
+}
+#mapa{
+	margin-top: 5%;
+	margin-left: 10%;
+	padding: 4px;
+	background:#666;
+	border-radius:20px;
+	-webkit-transition:transform 0.3s ease 0.1s;
+}
+#p{
 	
-	font:bold 1.9em Verdana,Geneva,sans-serif;
-	background: #000;
-	width:25%;
-	padding:15px;
-	margin:15px auto;
-	margin-top: 10%;
-	text-align:center;
-	border-radius:50px;
-	color:#FFFFFF;
-	box-shadow:#ff0000 3px 3px 15px;
-	text-shadow:#808080 3px 3px 3px;
+	margin-right: 100px;
+	margin-top: 20%;
+	float:left;
+	margin-bottom: 1%;
 }

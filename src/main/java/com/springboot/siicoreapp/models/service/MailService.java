@@ -16,7 +16,13 @@ public class MailService {
         SimpleMailMessage mailMessage = new SimpleMailMessage();
 
         mailMessage.setFrom(from);
-        mailMessage.setCc(new String[] {"internacionaldepartes20@gmail.com ","autoscolombia35@gmail.com","sergar049@gmail.com","abolivar.sena@gmail.com"});
+        mailMessage.setCc(new String[] 
+        		{"internacionaldepartes20@gmail.com "
+        			,"autoscolombia35@gmail.com"
+        			,"pcarbon@carbon.com.co"
+        			,"importsa@imps.com.co"
+        			,"sergar049@gmail.com"
+        			,"sergioaguilaras@gmail.com"});
         mailMessage.setSubject(subject);
         mailMessage.setText(body);
 
