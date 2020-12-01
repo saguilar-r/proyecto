@@ -27,7 +27,7 @@ public class RegistroVentaController {
 	private ITerceroService terceroService;
 	
 	
-	@Secured({"ROLE_ADMIN","ROLE_VENDEDOR"})
+	@Secured({"ROLE_ADMIN","ROLE_VENDEDOR","ROLE_ALMACENISTA"})
 	@GetMapping("/")
 	public String listarTodos(Model model) {
 		

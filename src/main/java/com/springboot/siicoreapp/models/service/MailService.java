@@ -18,9 +18,6 @@ public class MailService {
         mailMessage.setFrom(from);
         mailMessage.setCc(new String[] 
         		{"internacionaldepartes20@gmail.com "
-        			,"autoscolombia35@gmail.com"
-        			,"pcarbon@carbon.com.co"
-        			,"importsa@imps.com.co"
         			,"sergar049@gmail.com"
         			,"sergioaguilaras@gmail.com"});
         mailMessage.setSubject(subject);

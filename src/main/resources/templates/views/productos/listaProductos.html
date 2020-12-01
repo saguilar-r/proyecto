@@ -1,6 +1,8 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
-<head th:replace="plantilla/template :: head">
+<html xmlns:th="http://www.thymeleaf.org"
+xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<head th:replace="plantilla/template :: head"
+>
 <meta charset="UTF-8">
 </head>
 <body>
@@ -37,10 +39,12 @@
 	<div class="container-fluid" id="background-head">
 
 	
-		<a class="btn btn-primary btn-sm" th:href="@{/productos/createProducto}"
+		<a class="btn btn-primary btn-sm" sec:authorize="hasRole('ROLE_ADMIN') or hasRole('ROLE_ALMACENISTA')"
+		 th:href="@{/productos/createProducto}"
 		th:text="'Nuevo'" title="Create A New Record">
 		</a>
-		<a class="btn btn-primary btn-sm" th:href="@{/cargar-info}"
+		<a class="btn btn-primary btn-sm" sec:authorize="hasRole('ROLE_ADMIN') or hasRole('ROLE_ALMACENISTA')"
+		 th:href="@{/cargar-info}"
 		th:text="'Cargar productos'" title="Create A New Record">
 		</a>
 		
@@ -58,7 +62,7 @@
 					<th scope="col">MARCA COCHE</th>
 					<th scope="col">REFERENCIA</th>
 					<th scope="col">ESTADO</th>
-					<th scope="col">ACCIONES</th>
+					<th sec:authorize="hasRole('ROLE_ADMIN') or hasRole('ROLE_ALMACENISTA')" scope="col">ACCIONES</th>
 					
 				</tr>
 			</thead>
@@ -76,11 +80,11 @@
 					<td th:text="${p.estado}"></td>
 						
 					<td>
-					<a class="btn btn-warning btn-sm" th:href="@{/productos/edit/} + ${p.id_producto}" 
+					<a sec:authorize="hasRole('ROLE_ADMIN') or hasRole('ROLE_ALMACENISTA')" class="btn btn-warning btn-sm" th:href="@{/productos/edit/} + ${p.id_producto}" 
 					th:text="'Editar'" title="Record Edit"
 					onclick="return confirm('Do you want edit this field?');">>
 					</a>
-					<a class="btn btn-danger btn-sm" th:href="@{/productos/delete/} + ${p.id_producto}" 
+					<a sec:authorize="hasRole('ROLE_ADMIN') or hasRole('ROLE_ALMACENISTA')" class="btn btn-danger btn-sm" th:href="@{/productos/delete/} + ${p.id_producto}" 
 					th:text="'Eliminar'" title="Record Delete"
 					onclick="return confirm('Do you want delete this field?');">
 					</a>

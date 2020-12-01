@@ -1,5 +1,6 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
+<html xmlns:th="http://www.thymeleaf.org"
+xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
 <head th:replace="plantilla/template :: head">
 
 </head>
@@ -37,10 +38,10 @@
 		<table class="table table-striped">
 			<thead class="thead-dark">
 				<tr>
-					<th scope="col">PRODUCT CATEGORY ID</th>
-					<th scope="col">CATEGORY NAME</th>
-					<th scope="col">STATUS</th>
-					<th scope="col">ACTIONS</th>
+					<th scope="col">CATEGORIA PRODUCTO ID</th>
+					<th scope="col">NOMBRE CATEGORIA</th>
+					<th scope="col">ESTADO</th>
+					<th scope="col">ACCION</th>
 					
 				</tr>
 			</thead>
@@ -53,9 +54,9 @@
 					
 					<a class="btn btn-warning btn-sm" th:href="@{/ctproductos/edit/} + ${ct.id_categoria_producto}"
 					th:text="'Edit'" title="Record Edit"
-					onclick="return confirm('Do you want edit this field?');">>
+					onclick="return confirm('Do you want edit this field?');">
 					</a>
-					<a class="btn btn-danger btn-sm" th:href="@{/ctproductos/delete/} + ${ct.id_categoria_producto}"
+					<a sec:authorize="hasRole('ROLE_ADMIN') or hasRole('ROLE_ALMACENISTA')" class="btn btn-danger btn-sm" th:href="@{/ctproductos/delete/} + ${ct.id_categoria_producto}"
 					th:text="'Delete'" title="Record Delete"
 					onclick="return confirm('Esta seguro de eliminar el registro?');">
 					</a>

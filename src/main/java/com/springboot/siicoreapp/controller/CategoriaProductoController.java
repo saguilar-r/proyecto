@@ -21,7 +21,7 @@ public class CategoriaProductoController {
 	@Autowired
 	private ICategoriaProductoService categoriaProductoService;
 	
-	@Secured({"ROLE_ALMACENISTA", "ROLE_ADMIN"})
+	@Secured({"ROLE_ALMACENISTA", "ROLE_ADMIN","ROLE_AUXILIAR"})
 	@GetMapping("/")
 	public String listarTodos(Model model) {
 		
@@ -31,7 +31,7 @@ public class CategoriaProductoController {
 		return "/views/ctproductos/listarCtProductos";
 	}
 	
-	@Secured({"ROLE_ALMACENISTA", "ROLE_ADMIN"})
+	@Secured({"ROLE_ALMACENISTA", "ROLE_ADMIN","ROLE_AUXILIAR"})
 	@GetMapping("/createctp")
 	public String crear(Model model) {
 		
@@ -41,7 +41,7 @@ public class CategoriaProductoController {
 		return "/views/ctproductos/formCtProductos";
 	}
 	
-	@Secured({"ROLE_ALMACENISTA", "ROLE_ADMIN"})
+	@Secured({"ROLE_ALMACENISTA", "ROLE_ADMIN","ROLE_AUXILIAR"})
 	@PostMapping("/savectproductos")
 	public String guardar(@ModelAttribute CategoriaProducto categoriaProducto,Model model, RedirectAttributes attr) {
 		
@@ -51,7 +51,7 @@ public class CategoriaProductoController {
 		return "redirect:/ctproductos/";
 	}
 	
-	@Secured({"ROLE_ALMACENISTA", "ROLE_ADMIN"})
+	@Secured({"ROLE_ALMACENISTA", "ROLE_ADMIN","ROLE_AUXILIAR"})
 	@GetMapping("/edit/{id_categoria_producto}")
 	public String editar(@PathVariable("id_categoria_producto") Long idCatProducto, Model model) {
 		

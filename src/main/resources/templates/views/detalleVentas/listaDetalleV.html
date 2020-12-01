@@ -1,10 +1,13 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
+<html xmlns:th="http://www.thymeleaf.org"
+xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
 <head th:replace="plantilla/template :: head">
 </head>
 <body>
 	<header th:replace="plantilla/template :: header"></header>
-
+ 
+ 
+    <br><br><br><br><br>
 	<div class="container">	
 	
 	<div class="alert alert-success alert-dismissible fade show"
@@ -24,6 +27,7 @@
 			</button>
 		</div>
 	    
+	    <br><br><br><br><br>
 		<h1 class="display-3 text-center" th:text="${titulo}"></h1>
 		<div class="shadow-lg p-3 mb-5 bg-grey rounded"></div>
 		
@@ -33,7 +37,7 @@
 	
 	
 		<a class="btn btn-primary btn-sm" th:href="@{/dventas/createDetalleV}"
-		th:text="'New Record'" title="Create A New Record">
+		th:text="'Nuevo registro'" title="Nuevo Registro">
 		</a>
 		<a class="btn btn-primary btn-sm" th:href="@{http://localhost:8081/file/VENTAS%20AGOSTO.pdf}"
 		th:text="'Informe ventas Agosto'" title="Descargar Informes">
@@ -43,13 +47,13 @@
 		<table class="table table-striped">
 			<thead class="thead-dark">
 				<tr>
-					<th scope="col">SALE DETAILS ID</th>
-					<th scope="col">SALE ID</th>
-					<th scope="col">PRODUCT ID</th>
-					<th scope="col">QUANTITY</th>
-					<th scope="col">PRICE</th>
-					<th scope="col">DISCOUNT</th>
-					<th scope="col">ACTIONS</th>
+					<th scope="col">DETALLE VENTA ID</th>
+					<th scope="col">VENTA ID</th>
+					<th scope="col">PRODUCTO ID</th>
+					<th scope="col">CANTIDAD</th>
+					<th scope="col">PRECIO</th>
+					<th scope="col">DESCUENTO</th>
+					<th scope="col">ACCIONES</th>
 					
 				</tr>
 			</thead>
@@ -68,7 +72,7 @@
 					th:text="'Edit'" title="Record Edit"
 					onclick="return confirm('Do you want edit this field?');">>
 					</a>
-					<a class="btn btn-danger btn-sm" th:href="@{/dventas/delete/} + ${e.id_detalle_registro_ventas}" 
+					<a sec:authorize="hasRole('ROLE_ADMIN') or hasRole('ROLE_ALMACENISTA')"  class="btn btn-danger btn-sm" th:href="@{/dventas/delete/} + ${e.id_detalle_registro_ventas}" 
 					th:text="'Delete'" title="Record Delete"
 					onclick="return confirm('Esta seguro de eliminar el registro?');">
 					</a>

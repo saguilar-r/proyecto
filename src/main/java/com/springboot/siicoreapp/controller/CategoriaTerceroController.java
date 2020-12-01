@@ -21,7 +21,7 @@ public class CategoriaTerceroController {
 	@Autowired
 	private ICategoriaTercero categoriaTerceroService;
 	
-	@Secured({"ROLE_VENDEDOR", "ROLE_ADMIN"})
+	@Secured({"ROLE_VENDEDOR", "ROLE_ADMIN", "ROLE_AUXILIAR"})
 	@GetMapping("/")
 	public String listarTodos(Model model) {
 		model.addAttribute("titulo", "CATEGORIA TERCERO");
@@ -30,7 +30,7 @@ public class CategoriaTerceroController {
 		return "/views/cterceros/listaCTerceros";
 	}
 
-	@Secured({"ROLE_VENDEDOR", "ROLE_ADMIN"})
+	@Secured({"ROLE_VENDEDOR", "ROLE_ADMIN", "ROLE_AUXILIAR"})
 	@GetMapping("/createcterceros")
 	public String crear(Model model) {
 		
@@ -40,7 +40,7 @@ public class CategoriaTerceroController {
 		return "/views/cterceros/frmCTerceros";
 	}
 	
-	@Secured({"ROLE_VENDEDOR", "ROLE_ADMIN"})
+	@Secured({"ROLE_VENDEDOR", "ROLE_ADMIN", "ROLE_AUXILIAR"})
 	@PostMapping("/savecterceros")
 	public String guardar(@ModelAttribute CategoriaTercero categoriaTercero, Model model, RedirectAttributes attr) {
 		
@@ -50,7 +50,7 @@ public class CategoriaTerceroController {
 		return "redirect:/cterceros/";
 	}
 	
-	@Secured({"ROLE_VENDEDOR", "ROLE_ADMIN"})
+	@Secured({"ROLE_VENDEDOR", "ROLE_ADMIN", "ROLE_AUXILIAR"})
 	@GetMapping("/edit/{id_categoria_tercero}")
 	public String editar(@PathVariable ("id_categoria_tercero") Long idCategoriaTercero, Model model) {
 		

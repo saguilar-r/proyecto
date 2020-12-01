@@ -33,7 +33,7 @@ xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
 	<div class="container-fluid" id="background-head">
 
 	
-		<a class="btn btn-primary btn-sm" sec:authorize="hasRole('ROLE_ADMIN')"   th:href="@{/ventas/createventa}"
+		<a class="btn btn-primary btn-sm" sec:authorize="hasRole('ROLE_ADMIN') or hasRole('ROLE_ALMACENISTA')"   th:href="@{/ventas/createventa}"
 		th:text="'Nuevo Registro'" title="Nuevo Registro Venta">
 		</a>
 		
@@ -48,7 +48,7 @@ xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
 					<th scope="col">FECHA</th>
 					<th scope="col">TOTAL</th>
 					<th scope="col"  >EDITAR</th>
-					<th scope="col" sec:authorize="hasRole('ROLE_ADMIN')"  >ELIMINAR</th>
+					<th scope="col" sec:authorize="hasRole('ROLE_ADMIN') or hasRole('ROLE_ALMACENISTA')"  >ELIMINAR</th>
 
 					
 				</tr>
@@ -67,7 +67,7 @@ xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
 					onclick="return confirm('¿Quiere editar este campo?');">
 					</a>
 					</td>
-					<td sec:authorize="hasRole('ROLE_ADMIN')" >
+					<td sec:authorize="hasRole('ROLE_ADMIN') or hasRole('ROLE_ALMACENISTA')" >
 					<a  class="btn btn-danger btn-sm" th:href="@{/ventas/delete/} + ${t.id_registro_venta}" 
 					th:text="'Eliminar'" title="Eliminar Registro"
 					onclick="return confirm('ATENCIÓN! ¿Desea eliminar este registro?');">

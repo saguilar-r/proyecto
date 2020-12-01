@@ -29,7 +29,7 @@ public class DetalleVentaController {
 	@Autowired
 	private IProductoService productoService;
 	
-	@Secured({"ROLE_VENDEDOR", "ROLE_ADMIN"})
+	@Secured({"ROLE_VENDEDOR", "ROLE_ADMIN","ROLE_ALMACENISTA"})
 	@GetMapping("/")
 	public String listar(Model model) {
 		
@@ -38,7 +38,7 @@ public class DetalleVentaController {
 		
 		return "/views/detalleVentas/listaDetalleV";
 	}
-	@Secured({"ROLE_VENDEDOR", "ROLE_ADMIN"})
+	@Secured({"ROLE_VENDEDOR", "ROLE_ADMIN", "ROLE_ALMACENISTA"})
 	@GetMapping("/createDetalleV")
 	public String crear(Model model) {
 		
@@ -49,7 +49,7 @@ public class DetalleVentaController {
 		
 		return "/views/detalleVentas/frmDetalleV";
 	}
-	@Secured({"ROLE_VENDEDOR", "ROLE_ADMIN"})
+	@Secured({"ROLE_VENDEDOR", "ROLE_ADMIN","ROLE_ALMACENISTA"})
 	@PostMapping("/saveDetalleV")
 	public String guardar(@ModelAttribute DetalleVenta detalleVenta, Model model, RedirectAttributes attr) {
 		
@@ -61,7 +61,7 @@ public class DetalleVentaController {
     	return "redirect:/dventas/";
 		
 	}
-	@Secured({"ROLE_VENDEDOR", "ROLE_ADMIN"})
+	@Secured({"ROLE_VENDEDOR", "ROLE_ADMIN", "ROLE_ALMACENISTA"})
 	@GetMapping("/edit/{id_detalle_registro_ventas}")
 	public String editar(@PathVariable("id_detalle_registro_ventas") Long idDetalleVenta, Model model) {
 	

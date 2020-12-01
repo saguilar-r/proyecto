@@ -1,5 +1,6 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
+<html xmlns:th="http://www.thymeleaf.org"
+xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
 <head th:replace="plantilla/template :: head">
 </head>
 <body>
@@ -31,16 +32,16 @@
 	<div class="container">
 	
 		<a class="btn btn-primary btn-sm" th:href="@{/cterceros/createcterceros}"
-		th:text="'New Record'" title="Create A New Record">
+		th:text="'Nuevo Registro'" title="Crear nuevo registro">
 		</a>
 		
 		
 		<table class="table table-striped" >
 			<thead class="thead-dark">
 				<tr>
-					<th scope="col">CATEGORY ID</th>
-					<th scope="col">NAME</th>
-					<th scope="col">ACTIONS</th>
+					<th scope="col">ID CATEGORIA</th>
+					<th scope="col">NOMBRE</th>
+					<th scope="col">ACCION</th>
 					
 				</tr>
 			</thead>
@@ -54,7 +55,7 @@
 					th:text="'Edit'" title="Record Edit"
 					onclick="return confirm('Do you want edit this field?');">
 					</a>
-					<a class="btn btn-danger btn-sm" th:href="@{/cterceros/delete/} + ${ct.id_categoria_tercero}" 
+					<a sec:authorize="hasRole('ROLE_ADMIN')" class="btn btn-danger btn-sm" th:href="@{/cterceros/delete/} + ${ct.id_categoria_tercero}" 
 					th:text="'Delete'" title="Record Delete"
 					onclick="return confirm('Esta seguro de eliminar el registro?');">
 					</a>

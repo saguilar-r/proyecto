@@ -6,6 +6,7 @@
 <body>
 	<header th:replace="plantilla/template :: header" ></header>
 	
+	<br><br><br><br><br><br>
 	<div class="container"> 
 	
 		<div class="card bg-light">
@@ -17,7 +18,7 @@
 			
 		
 				<input type="hidden" th:field="*{id_detalle_registro_ventas}">
-				<label class="col-md-2" for="id_registro_venta">SALE ID:</label> 
+				<label class="col-md-2" for="id_registro_venta">ID VENTA:</label> 
 				<select  th:field="*{ventas.id_registro_venta}" class="form-control form-control-sm col-md-6"  id="id_registro_venta">
 				<option th:each="c:${ventas}"
 				 th:value="${c.id_registro_venta}"
@@ -27,7 +28,7 @@
 				</div>
 			
 			<div class="form-group row">
-				<label class="col-md-2" for="id_producto">PRODUCT NAME:</label> 
+				<label class="col-md-2" for="id_producto">PRODUCTO:</label> 
 				<select  th:field="*{producto.id_producto}" class="form-control form-control-sm col-md-6"  id="id_producto">
 				<option th:each="p:${productos}"
 				 th:value="${p.id_producto}"
@@ -37,21 +38,21 @@
 				</div>
 			
 			<div class="form-group row">
-				<label class="col-md-2" for="cantidad">QUANTITY:</label> 
+				<label class="col-md-2" for="cantidad">CANTIDAD:</label> 
 				<input type="text" th:field="*{cantidad}" class="form-control form-control-sm col-md-6"  id="cantidad"
 				placeholder="Quantity">
 				<small></small>	
 			</div>
 			
 			<div class="form-group row">
-				<label class="col-md-2" for="precio">PRICE:</label> 
+				<label class="col-md-2" for="precio">PRECIO:</label> 
 				<input type="text" th:field="*{precio}" class="form-control form-control-sm col-md-6"  id="precio"
 				placeholder="Price">
 				<small></small>	
 			</div>
 			
 			<div class="form-group row">
-				<label class="col-md-2" for="descuento">DISCOUNT:</label> 
+				<label class="col-md-2" for="descuento">DESCUENTO:</label> 
 				<input type="text" th:field="*{descuento}" class="form-control form-control-sm col-md-6"  id="descuento"
 				placeholder="Discount">
 				<small></small>	

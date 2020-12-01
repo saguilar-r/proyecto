@@ -32,7 +32,7 @@ public class DetalleInventarioController {
 	@Autowired
 	private IProductoService productoService;
 	
-	@Secured({"ROLE_ALMACENISTA", "ROLE_ADMIN"})
+	@Secured({"ROLE_ADMIN", "ROLE_AUXILIAR", "ROLE_ALMACENISTA"})
 	@GetMapping("/")
 	public String listar(Model model) {
 		

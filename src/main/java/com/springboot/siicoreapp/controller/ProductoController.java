@@ -32,7 +32,7 @@ public class ProductoController {
 	@Autowired
 	private ICategoriaProductoService categoriaProductoService;
 	
-	@Secured({"ROLE_VENDEDOR", "ROLE_ADMIN", "ROLE_ALMACENISTA"})
+	@Secured({"ROLE_VENDEDOR", "ROLE_ADMIN", "ROLE_ALMACENISTA", "ROLE_AUXILIAR"})
 	@GetMapping("/")
 	public String listarTodos(Model model) {
 		
