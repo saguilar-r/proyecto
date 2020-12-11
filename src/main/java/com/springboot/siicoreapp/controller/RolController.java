@@ -42,48 +42,31 @@ public class RolController {
 	@GetMapping("/create")
 	public String crear(Model model) {
 		
-		Rol rol = new Rol();
-		
-		model.addAttribute("titulo", "Form: New Role");
-		model.addAttribute("rol", rol);
+		model.addAttribute("titulo", "Nuevo Rol");
+		model.addAttribute("rol", new Rol());
 		model.addAttribute("usuario", usuarioService.ListarTodos());
 		return "/views/roles/frmCrear";
 	}
 	
-	@PostMapping("/save") 
+	@PostMapping("/save-rol") 
 	public String guardar(@ModelAttribute Rol rol, Model model, RedirectAttributes attr) {
 			  
+		System.out.println(rol);
 		rolService.guardar(rol);
 		attr.addFlashAttribute("success", "Rol guardado exitosamente");
 		System.out.println("Rol guardado exitosamente");
-		model.addAttribute("usuario", usuarioService.ListarTodos());
+		model.addAttribute("usuario", usuarioService.ListarTodos()); 
 	    return "redirect:/rol/"; 	
 	    
 	}
 	
-	/*
-	 * @PostMapping("/save") public String guardar(@Param("nombre_rol") String
-	 * nombre_rol) {
-	 * 
-	 * System.out.println(nombre_rol); //rolesService.guardar(role);
-	 * System.out.println("Role saved successfully"); return
-	 * "redirect:/views/roles/"; }
-	 */
-	/*
-	 * @GetMapping("/edit/{id_rol}") public String editar(@PathVariable("id_rol")
-	 * Long idRol, Model model) {
-	 * 
-	 * 
-	 * model.addAttribute("titulo", "Form: Role Edit"); model.addAttribute("role",
-	 * rolesService.buscarPorId(idRol)); return "/views/roles/frmCrear"; }
-	 */
 	@GetMapping("/edit/{id_rol}")
 	public String editar(@PathVariable("id_rol") Long idRol, Model model) {
 			
 		/* Rol rol = new Rol(); */
 		
 		
-		model.addAttribute("titulo", "Formulario: Rol Edit");
+		model.addAttribute("titulo", "Formulario: EDITAR ROL");
 		model.addAttribute("rol", rolService.buscarPorId(idRol));
 		model.addAttribute("usuario", usuarioService.ListarTodos());
 		
@@ -92,13 +75,13 @@ public class RolController {
 	}
 		
 	
-	//@GetMapping("/delete/{id_rol}")
+
 	@GetMapping("/delete/{id_rol}")
-	public String eliminar(@PathVariable("id_rol") Long idRol, RedirectAttributes attribute) {
+	public String eliminar(@PathVariable("id_rol") Long idRol, Model model, RedirectAttributes attribute) {
 
 		rolService.eliminar(idRol);
 		System.out.println("Registro Eliminado con Exito!");
-		attribute.addFlashAttribute("warning", "Record was delete successfully!");
+		attribute.addFlashAttribute("warning", "Registro eliminado exitosamente");
 
 		return "redirect:/rol/";
 	}

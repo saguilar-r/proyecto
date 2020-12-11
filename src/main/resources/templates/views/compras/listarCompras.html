@@ -2,6 +2,8 @@
 <html xmlns:th="http://www.thymeleaf.org"
 xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
 <head th:replace="plantilla/template :: head">
+<link rel="stylesheet"
+	href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
 </head>
 <body>
 	<header th:replace="plantilla/template :: header"></header>
@@ -25,8 +27,8 @@ xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
 			</button>
 		</div>
 		<h1></h1>
-		<h1 class="display-3 text-center" th:text="${titulo}"></h1>
-		<div class="shadow-lg p-3 mb-5 bg-white rounded"></div>
+		<h1 class="animate__animated animate__bounce animate__fadeInDown display-3 text-center" th:text="${titulo}"></h1>
+		<div class=" shadow-lg p-3 mb-5 bg-white rounded"></div>
 	</div>
 
 	<div class="container">
@@ -35,7 +37,7 @@ xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
 			<!-- 	<a class="btn btn-primary btn-sm" th:href="@{/compras/createcompra}"
 					th:text="'New User'" title="Create A New Record"> </a> -->
 					<a class="badge badge-primary text-wrap" th:href="@{/compras/createcompra}" style="width: 6rem;">
- 						 New Record
+ 						 Nueva compra
 						</a>
 
 

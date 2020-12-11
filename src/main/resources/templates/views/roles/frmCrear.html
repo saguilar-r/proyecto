@@ -14,23 +14,28 @@
 		<div class="card-header bg-dark text-white" th:text="${titulo}"></div>
 		<div class="card-body">
 		
-			<form th:action="@{/rol/save}" th:object="${rol}" method ="post">
+			<form th:action="@{/rol/save-rol}" th:object="${rol}" method ="post">
+			
 			<div class="form-group row">
 			
 				<input type="hidden" th:field="*{id_rol}">
-				<label class="col-md-2" for="user_id">USER ID:</label> 
-				<select th:field="*{user}" class="form-control form-control-sm col-md-6"  id="user_id">
+				<label class="col-md-2" for="id"><strong>ID USUARIO:</strong></label> 
+				<select th:field="*{user}" class="form-control form-control-sm col-md-6"  id="id">
 				<option th:each="u:${usuario}"
 				th:value="${u.id}"
-				th:text="${u.id}"
+				th:text="${u.username}"
 				/>
 				</select>
+			</div>
 				
-				<label class="col-md-2" for="rol">Rol:</label> 
-				<input type="text" th:field="*{rol}" class="form-control form-control-sm col-md-3"  id="rol"
-				placeholder="Rol">
+			<div class="form-group row">
+				<label class="col-md-2" for="rol"><strong>ROL:</strong></label> 
+				<input type="text" th:field="*{rol}" class="form-control form-control-sm col-md-6"  id="rol"
+				placeholder="code">
 				<small></small>	
 			</div>
+			
+			
 			<div class="card-footer bg-dark">
 				<input type="submit" class="btn btn-primary btn-sm" value="Save"/>
 			</div>

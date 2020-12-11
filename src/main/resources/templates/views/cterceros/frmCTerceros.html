@@ -8,15 +8,15 @@
 	<br><br><br><br><br><br><br>
 	<div class="container"> 
 	
-		<div class="card bg-light">
-		<div class="card-header bg-dark text-white" th:text="${titulo}"></div>
+		<div class="animate__animated animate__bounce animate__fadeInDown card bg-light">
+		<div class="card-header bg-dark text-white" >Nuevo Categoria Tercero</div>
 		<div class="card-body">
 		
 			<form th:action="@{/cterceros/savecterceros}" th:object="${cterceros}" method ="post">
 			<div class="form-group row">
 			
 				<input type="hidden" th:field="*{id_categoria_tercero}">
-				<label class="col-md-2" for="nombre">NAME:</label> 
+				<label class="col-md-2" for="nombre">NOMBRE:</label> 
 				<input type="text" th:field="*{nombre}" class="form-control form-control-sm col-md-6"  id="nombre"
 				placeholder="name">
 				<small></small>	

@@ -38,8 +38,6 @@ public class UsuarioController {
 	@GetMapping("/createUser")
 	public String crear(Model model) {
 		
-		/* Usuario usuario = new Usuario(); */
-		/* List<Rol> listRol= rolService.listarRoles(); */
 		
 		model.addAttribute("titulo", "Form: New User");
 		model.addAttribute("usuario", new User());
@@ -50,6 +48,7 @@ public class UsuarioController {
 	@PostMapping("/saveUser") 
 	public String guardar(@ModelAttribute User usuario, Model model, RedirectAttributes attr) {
 		
+		System.out.println(usuario);
 		usuarioService.guardar(usuario);
 		attr.addFlashAttribute("success", "User saved successfully");
 		System.out.println("User saved successfully"); 

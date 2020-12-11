@@ -7,8 +7,12 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+
 import javax.persistence.ManyToOne;
+
 import javax.persistence.Table;
+
+
 
 @Entity
 @Table(name="roles")
@@ -22,10 +26,11 @@ public class Rol implements Serializable{
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private Long id_rol;
+	
 	private String rol;
 	
 	@ManyToOne
-	@JoinColumn(name="user_id")
+	@JoinColumn(name="id")
 	private User user;
 
 	public Long getId_rol() {
@@ -56,4 +61,6 @@ public class Rol implements Serializable{
 	public String toString() {
 		return "Rol [id_rol=" + id_rol + ", rol=" + rol + ", user=" + user + "]";
 	}
+
+
 }

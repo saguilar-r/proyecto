@@ -37,7 +37,7 @@ public class User implements Serializable {
 		return id;
 	}
 
-	public void setId_usuario(Long id) {
+	public void setId(Long id) {
 		this.id = id;
 	}
 
@@ -67,7 +67,7 @@ public class User implements Serializable {
 
 	@Override
 	public String toString() {
-		return "User [id_usuario=" + id + ", username=" + username + ", password=" + password + ", enabled="
+		return "User [id=" + id + ", username=" + username + ", password=" + password + ", enabled="
 				+ enabled + "]";
 	}
 

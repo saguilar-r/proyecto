@@ -8,7 +8,7 @@
 	<br><br><br><br><br><br>
 	<div class="container"> 
 	
-		<div class="card bg-light">
+		<div class="animate__animated animate__bounce animate__fadeInDown card bg-light">
 		<div class="card-header bg-dark text-white" th:text="${titulo}"></div>
 		<div class="card-body">
 		
@@ -16,7 +16,7 @@
 			<div class="form-group row">
 			
 				<input type="hidden" th:field="*{id_registro_compra}">
-				<label class="col-md-2" for="id_tercero">THIRD PARTIES ID:</label> 
+				<label class="col-md-2" for="id_tercero">TERCEROS ID:</label> 
 				<select  th:field="*{tercero.id_tercero}" class="form-control form-control-sm col-md-6"  id="id_tercero">
 				<option th:each="t:${tercero}"
 				 th:value="${t.id_tercero}"
@@ -26,35 +26,35 @@
 			</div>
 			
 			<div class="form-group row">
-				<label class="col-md-2" for="tipo_comprobante">SALES SLIP TYPE:</label> 
+				<label class="col-md-2" for="tipo_comprobante">TIPO COMPROBANTE:</label> 
 				<input type="text" th:field="*{tipo_comprobante}" class="form-control form-control-sm col-md-6"  id="tipo_comprobante"
 				placeholder="Key">
 				<small></small>	
 			</div>
 			
 			<div class="form-group row">
-				<label class="col-md-2" for="num_comprobante">SALES SLIP NUMBER:</label> 
+				<label class="col-md-2" for="num_comprobante">No. COMPROBANTE:</label> 
 				<input type="text" th:field="*{num_comprobante}" class="form-control form-control-sm col-md-6"  id="num_comprobante"
 				placeholder="Key">
 				<small></small>	
 			</div>
 			
 			<div class="form-group row">
-				<label class="col-md-2" for="fecha">DATE:</label> 
+				<label class="col-md-2" for="fecha">FECHA:</label> 
 				<input type="text" th:field="*{fecha}" class="form-control form-control-sm col-md-6"  id="fecha"
 				placeholder="Key">
 				<small></small>	
 			</div>
 			
 			<div class="form-group row">
-				<label class="col-md-2" for="subtotal">TOTAL PARCIAL:</label> 
+				<label class="col-md-2" for="subtotal">SUBTOTAL:</label> 
 				<input type="text" th:field="*{subtotal}" class="form-control form-control-sm col-md-6"  id="subtotal"
 				placeholder="Key">
 				<small></small>	
 			</div>
 			
 			<div class="form-group row">
-				<label class="col-md-2" for="impuesto">TAX:</label> 
+				<label class="col-md-2" for="impuesto">IMPUESTO:</label> 
 				<input type="text" th:field="*{impuesto}" class="form-control form-control-sm col-md-6"  id="impuesto"
 				placeholder="Key">
 				<small></small>	
