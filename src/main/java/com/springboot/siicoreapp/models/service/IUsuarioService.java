@@ -9,7 +9,7 @@ public interface IUsuarioService {
 	
 	public List<User> ListarTodos();
 	public void guardar(User user);
-	public User buscarPorId(Long id_usuario);
-	public void eliminar(Long id_usuario);
+	public User buscarPorId(Long id);
+	public void eliminar(Long id);
 
 }

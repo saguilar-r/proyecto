@@ -16,7 +16,7 @@ public class ContactoMailService {
 	        SimpleMailMessage mailMessages = new SimpleMailMessage();
 
 	        mailMessages.setFrom(from);
-	        mailMessages.setTo("websiicore@gmail.com");
+	        mailMessages.setCc(new String[]{"websiicore@gmail.com","saaguilar803@misena.edu.co"});
 	        mailMessages.setSubject(subject);
 	        mailMessages.setText(body);
 

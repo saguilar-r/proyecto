@@ -47,7 +47,7 @@
 							th:href="@{/fproductos}">PRODUCTOS <span class="sr-only">(current)</span>
 						</a></li>
 						<li  class="nav-item" sec:authorize="hasRole('ROLE_ADMIN')">
-						<!-- <a class="nav-link" th:href="@{/rol/}">ROLES</a></li> -->
+						<a class="nav-link" th:href="@{/rol/}">ROLES</a></li>
 						<li  class="nav-item" sec:authorize="hasRole('ROLE_ADMIN')">
 						<a class="nav-link" th:href="@{/usuarios/}">USUARIOS</a></li>
 									<li  class="nav-item dropdown" sec:authorize="hasRole('ROLE_ADMIN') or hasRole('ROLE_VENDEDOR') 

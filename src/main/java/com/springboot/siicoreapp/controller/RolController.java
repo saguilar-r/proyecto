@@ -54,7 +54,6 @@ public class RolController {
 		System.out.println(rol);
 		rolService.guardar(rol);
 		attr.addFlashAttribute("success", "Rol guardado exitosamente");
-		System.out.println("Rol guardado exitosamente");
 		model.addAttribute("usuario", usuarioService.ListarTodos()); 
 	    return "redirect:/rol/"; 	
 	    

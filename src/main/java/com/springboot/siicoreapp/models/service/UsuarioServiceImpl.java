@@ -39,13 +39,13 @@ public class UsuarioServiceImpl implements IUsuarioService{
 	}
 
 	@Override
-	public User buscarPorId(Long id_usuario) {
-		return usuarioRepository.findById(id_usuario).orElse(null);
+	public User buscarPorId(Long id) {
+		return usuarioRepository.findById(id).orElse(null);
 	}
 
 	@Override
-	public void eliminar(Long id_usuario) {
-		usuarioRepository.deleteById(id_usuario);
+	public void eliminar(Long id) {
+		usuarioRepository.deleteById(id);
 
 	}
 
